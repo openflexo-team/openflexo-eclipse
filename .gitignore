@@ -1,6 +1,13 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+target
+.project
+.classpath
+.settings
+*.helpset
+*.hprof
+*.iml
+*.ipr
+*.iws
+*.log
+.DS_Store
+*.hprof.index
+.vmweb-config.xml
