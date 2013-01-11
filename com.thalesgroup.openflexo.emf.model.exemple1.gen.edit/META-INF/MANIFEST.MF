@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.thalesgroup.openflexo.emf.model.exemple1.gen.edit;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .
+Bundle-Activator: com.thalesgroup.openflexo.emf.model.exemple1.provider.Exemple1EditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.thalesgroup.openflexo.emf.model.exemple1.provider
+Require-Bundle: org.eclipse.core.runtime,
+ com.thalesgroup.openflexo.emf.model.exemple1.gen;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy

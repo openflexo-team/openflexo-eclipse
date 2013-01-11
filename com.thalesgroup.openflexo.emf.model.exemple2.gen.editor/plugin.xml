@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.thalesgroup.openflexo.emf.model.exemple2.presentation.Exemple2ModelWizardID"
+            name="%_UI_Exemple2ModelWizard_label"
+            class="com.thalesgroup.openflexo.emf.model.exemple2.presentation.Exemple2ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Exemple2ModelFile.gif">
+         <description>%_UI_Exemple2ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="com.thalesgroup.openflexo.emf.model.exemple2.presentation.Exemple2EditorID"
+            name="%_UI_Exemple2Editor_label"
+            icon="icons/full/obj16/Exemple2ModelFile.gif"
+            extensions="exemple2"
+            class="com.thalesgroup.openflexo.emf.model.exemple2.presentation.Exemple2Editor"
+            contributorClass="com.thalesgroup.openflexo.emf.model.exemple2.presentation.Exemple2ActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
