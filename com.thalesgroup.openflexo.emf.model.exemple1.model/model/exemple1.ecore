@@ -14,7 +14,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//HouseType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="info" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
   <eClassifiers xsi:type="ecore:EEnum" name="HouseType">
     <eLiterals name="Mansion"/>
     <eLiterals name="Appartment" value="1"/>
