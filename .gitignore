@@ -1,7 +1,5 @@
 target
-.project
-.classpath
-.settings
+*.class
 *.helpset
 *.hprof
 *.iml
