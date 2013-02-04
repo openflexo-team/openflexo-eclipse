@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.thalesgroup.openflexo.emf.model.city1.feature"
+      label="city1 Feature"
+      version="1.0.0.qualifier"
+      provider-name="THALESGROUP">
+
+   <plugin
+         id="com.thalesgroup.openflexo.emf.model.city1.gen"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="com.thalesgroup.openflexo.emf.model.city1.gen.edit"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="com.thalesgroup.openflexo.emf.model.city1.gen.editor"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="com.thalesgroup.openflexo.emf.model.city1.gen.tests"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="com.thalesgroup.openflexo.emf.model.city1.model"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+</feature>

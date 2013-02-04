@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.thalesgroup.openflexo.emf.model.city2.presentation.City2ModelWizardID"
+            name="%_UI_City2ModelWizard_label"
+            class="com.thalesgroup.openflexo.emf.model.city2.presentation.City2ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/City2ModelFile.gif">
+         <description>%_UI_City2ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="com.thalesgroup.openflexo.emf.model.city2.presentation.City2EditorID"
+            name="%_UI_City2Editor_label"
+            icon="icons/full/obj16/City2ModelFile.gif"
+            extensions="city2"
+            class="com.thalesgroup.openflexo.emf.model.city2.presentation.City2Editor"
+            contributorClass="com.thalesgroup.openflexo.emf.model.city2.presentation.City2ActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

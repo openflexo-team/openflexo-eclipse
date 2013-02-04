@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.thalesgroup.openflexo.emf.model.city2.gen.edit;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.thalesgroup.openflexo.emf.model.city2.provider.City2EditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.thalesgroup.openflexo.emf.model.city2.provider
+Require-Bundle: org.eclipse.core.runtime,
+ com.thalesgroup.openflexo.emf.model.city2.gen;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy

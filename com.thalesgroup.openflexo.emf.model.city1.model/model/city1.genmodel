@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.thalesgroup.openflexo.emf.model.city1.gen/src"
+    editDirectory="/com.thalesgroup.openflexo.emf.model.city1.gen.edit/src" editorDirectory="/com.thalesgroup.openflexo.emf.model.city1.gen.editor/src"
+    modelPluginID="com.thalesgroup.openflexo.emf.model.city1.gen" modelName="City1"
+    editPluginClass="com.thalesgroup.openflexo.emf.model.city1.provider.City1EditPlugin"
+    editorPluginClass="com.thalesgroup.openflexo.emf.model.city1.presentation.City1EditorPlugin"
+    testSuiteClass="com.thalesgroup.openflexo.emf.model.city1.tests.City1AllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    providerRootExtendsClass="" editPluginID="com.thalesgroup.openflexo.emf.model.city1.gen.edit"
+    editorPluginID="com.thalesgroup.openflexo.emf.model.city1.gen.editor" testsPluginID="com.thalesgroup.openflexo.emf.model.city1.gen.tests">
+  <foreignModel>city1.ecore</foreignModel>
+  <genPackages prefix="city1" basePackage="com.thalesgroup.openflexo.emf.model" disposableProviderFactory="true"
+      ecorePackage="city1.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="city1.ecore#//HouseType">
+      <genEnumLiterals ecoreEnumLiteral="city1.ecore#//HouseType/Mansion"/>
+      <genEnumLiterals ecoreEnumLiteral="city1.ecore#//HouseType/Appartment"/>
+    </genEnums>
+    <genClasses ecoreClass="city1.ecore#//City">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference city1.ecore#//City/houses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference city1.ecore#//City/residents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute city1.ecore#//City/name"/>
+    </genClasses>
+    <genClasses ecoreClass="city1.ecore#//House">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference city1.ecore#//House/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute city1.ecore#//House/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute city1.ecore#//House/info"/>
+    </genClasses>
+    <genClasses ecoreClass="city1.ecore#//Resident">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute city1.ecore#//Resident/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
