@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getResident()
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getResident()
  * @model
  * @generated
  */
@@ -31,7 +31,7 @@ public interface Resident extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getResident_Name()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getResident_Name()
 	 * @model required="true"
 	 * @generated
 	 */

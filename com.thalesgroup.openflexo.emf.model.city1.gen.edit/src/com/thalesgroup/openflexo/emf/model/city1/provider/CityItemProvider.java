@@ -3,20 +3,13 @@
 package com.thalesgroup.openflexo.emf.model.city1.provider;
 
 
-import com.thalesgroup.openflexo.emf.model.city1.City;
-import com.thalesgroup.openflexo.emf.model.city1.city1Factory;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -27,6 +20,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.thalesgroup.openflexo.emf.model.city1.City;
+import com.thalesgroup.openflexo.emf.model.city1.City1Factory;
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
 
 /**
  * This is the item provider adapter for a {@link com.thalesgroup.openflexo.emf.model.city1.City} object.
@@ -81,7 +78,7 @@ public class CityItemProvider
 				 getResourceLocator(),
 				 getString("_UI_City_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_City_name_feature", "_UI_City_type"),
-				 city1Package.Literals.CITY__NAME,
+				 City1Package.Literals.CITY__NAME,
 				 true,
 				 false,
 				 false,
@@ -102,8 +99,8 @@ public class CityItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(city1Package.Literals.CITY__HOUSES);
-			childrenFeatures.add(city1Package.Literals.CITY__RESIDENTS);
+			childrenFeatures.add(City1Package.Literals.CITY__HOUSES);
+			childrenFeatures.add(City1Package.Literals.CITY__RESIDENTS);
 		}
 		return childrenFeatures;
 	}
@@ -158,11 +155,11 @@ public class CityItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(City.class)) {
-			case city1Package.CITY__NAME:
+			case City1Package.CITY__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case city1Package.CITY__HOUSES:
-			case city1Package.CITY__RESIDENTS:
+			case City1Package.CITY__HOUSES:
+			case City1Package.CITY__RESIDENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -182,13 +179,13 @@ public class CityItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(city1Package.Literals.CITY__HOUSES,
-				 city1Factory.eINSTANCE.createHouse()));
+				(City1Package.Literals.CITY__HOUSES,
+				 City1Factory.eINSTANCE.createHouse()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(city1Package.Literals.CITY__RESIDENTS,
-				 city1Factory.eINSTANCE.createResident()));
+				(City1Package.Literals.CITY__RESIDENTS,
+				 City1Factory.eINSTANCE.createResident()));
 	}
 
 	/**

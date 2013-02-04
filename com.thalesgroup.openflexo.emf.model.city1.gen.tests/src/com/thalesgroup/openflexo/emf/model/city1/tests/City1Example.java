@@ -2,26 +2,21 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.tests;
 
-import com.thalesgroup.openflexo.emf.model.city1.City;
-import com.thalesgroup.openflexo.emf.model.city1.city1Factory;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
 import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
 import org.eclipse.emf.ecore.util.Diagnostician;
-
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import com.thalesgroup.openflexo.emf.model.city1.City;
+import com.thalesgroup.openflexo.emf.model.city1.City1Factory;
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class city1Example {
+public class City1Example {
 	/**
 	 * <!-- begin-user-doc -->
 	 * Load all the argument file paths or URIs as instances of the model.
@@ -51,8 +46,8 @@ public class city1Example {
 		// Register the package to ensure it is available during loading.
 		//
 		resourceSet.getPackageRegistry().put
-			(city1Package.eNS_URI, 
-			 city1Package.eINSTANCE);
+			(City1Package.eNS_URI, 
+			 City1Package.eINSTANCE);
         
 		// If there are no arguments, emit an appropriate usage message.
 		//
@@ -60,7 +55,7 @@ public class city1Example {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.city1"));
-				City root = city1Factory.eINSTANCE.createCity();
+				City root = City1Factory.eINSTANCE.createCity();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}
@@ -118,4 +113,4 @@ public class city1Example {
 		}
 	}
 
-} //city1Example
+} //City1Example

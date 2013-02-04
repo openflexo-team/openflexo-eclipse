@@ -2,15 +2,13 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.impl;
 
-import com.thalesgroup.openflexo.emf.model.city1.Resident;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,7 +60,7 @@ public class ResidentImpl extends EObjectImpl implements Resident {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return city1Package.Literals.RESIDENT;
+		return City1Package.Literals.RESIDENT;
 	}
 
 	/**
@@ -83,7 +81,7 @@ public class ResidentImpl extends EObjectImpl implements Resident {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, city1Package.RESIDENT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, City1Package.RESIDENT__NAME, oldName, name));
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class ResidentImpl extends EObjectImpl implements Resident {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case city1Package.RESIDENT__NAME:
+			case City1Package.RESIDENT__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +106,7 @@ public class ResidentImpl extends EObjectImpl implements Resident {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case city1Package.RESIDENT__NAME:
+			case City1Package.RESIDENT__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -123,7 +121,7 @@ public class ResidentImpl extends EObjectImpl implements Resident {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case city1Package.RESIDENT__NAME:
+			case City1Package.RESIDENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -138,7 +136,7 @@ public class ResidentImpl extends EObjectImpl implements Resident {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case city1Package.RESIDENT__NAME:
+			case City1Package.RESIDENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);

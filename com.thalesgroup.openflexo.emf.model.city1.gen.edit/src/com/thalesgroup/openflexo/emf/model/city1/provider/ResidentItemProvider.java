@@ -3,17 +3,12 @@
 package com.thalesgroup.openflexo.emf.model.city1.provider;
 
 
-import com.thalesgroup.openflexo.emf.model.city1.Resident;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -24,6 +19,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
  * This is the item provider adapter for a {@link com.thalesgroup.openflexo.emf.model.city1.Resident} object.
@@ -78,7 +76,7 @@ public class ResidentItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Resident_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Resident_name_feature", "_UI_Resident_type"),
-				 city1Package.Literals.RESIDENT__NAME,
+				 City1Package.Literals.RESIDENT__NAME,
 				 true,
 				 false,
 				 false,
@@ -124,7 +122,7 @@ public class ResidentItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Resident.class)) {
-			case city1Package.RESIDENT__NAME:
+			case City1Package.RESIDENT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

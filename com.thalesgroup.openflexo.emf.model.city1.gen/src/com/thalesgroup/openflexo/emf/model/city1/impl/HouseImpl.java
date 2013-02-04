@@ -2,18 +2,16 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
 import com.thalesgroup.openflexo.emf.model.city1.House;
 import com.thalesgroup.openflexo.emf.model.city1.HouseType;
 import com.thalesgroup.openflexo.emf.model.city1.Resident;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -97,7 +95,7 @@ public class HouseImpl extends EObjectImpl implements House {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return city1Package.Literals.HOUSE;
+		return City1Package.Literals.HOUSE;
 	}
 
 	/**
@@ -111,7 +109,7 @@ public class HouseImpl extends EObjectImpl implements House {
 			owner = (Resident)eResolveProxy(oldOwner);
 			if (owner != oldOwner) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, city1Package.HOUSE__OWNER, oldOwner, owner));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, City1Package.HOUSE__OWNER, oldOwner, owner));
 			}
 		}
 		return owner;
@@ -135,7 +133,7 @@ public class HouseImpl extends EObjectImpl implements House {
 		Resident oldOwner = owner;
 		owner = newOwner;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, city1Package.HOUSE__OWNER, oldOwner, owner));
+			eNotify(new ENotificationImpl(this, Notification.SET, City1Package.HOUSE__OWNER, oldOwner, owner));
 	}
 
 	/**
@@ -156,7 +154,7 @@ public class HouseImpl extends EObjectImpl implements House {
 		HouseType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, city1Package.HOUSE__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, City1Package.HOUSE__TYPE, oldType, type));
 	}
 
 	/**
@@ -177,7 +175,7 @@ public class HouseImpl extends EObjectImpl implements House {
 		String oldInfo = info;
 		info = newInfo;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, city1Package.HOUSE__INFO, oldInfo, info));
+			eNotify(new ENotificationImpl(this, Notification.SET, City1Package.HOUSE__INFO, oldInfo, info));
 	}
 
 	/**
@@ -188,12 +186,12 @@ public class HouseImpl extends EObjectImpl implements House {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case city1Package.HOUSE__OWNER:
+			case City1Package.HOUSE__OWNER:
 				if (resolve) return getOwner();
 				return basicGetOwner();
-			case city1Package.HOUSE__TYPE:
+			case City1Package.HOUSE__TYPE:
 				return getType();
-			case city1Package.HOUSE__INFO:
+			case City1Package.HOUSE__INFO:
 				return getInfo();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -207,13 +205,13 @@ public class HouseImpl extends EObjectImpl implements House {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case city1Package.HOUSE__OWNER:
+			case City1Package.HOUSE__OWNER:
 				setOwner((Resident)newValue);
 				return;
-			case city1Package.HOUSE__TYPE:
+			case City1Package.HOUSE__TYPE:
 				setType((HouseType)newValue);
 				return;
-			case city1Package.HOUSE__INFO:
+			case City1Package.HOUSE__INFO:
 				setInfo((String)newValue);
 				return;
 		}
@@ -228,13 +226,13 @@ public class HouseImpl extends EObjectImpl implements House {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case city1Package.HOUSE__OWNER:
+			case City1Package.HOUSE__OWNER:
 				setOwner((Resident)null);
 				return;
-			case city1Package.HOUSE__TYPE:
+			case City1Package.HOUSE__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case city1Package.HOUSE__INFO:
+			case City1Package.HOUSE__INFO:
 				setInfo(INFO_EDEFAULT);
 				return;
 		}
@@ -249,11 +247,11 @@ public class HouseImpl extends EObjectImpl implements House {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case city1Package.HOUSE__OWNER:
+			case City1Package.HOUSE__OWNER:
 				return owner != null;
-			case city1Package.HOUSE__TYPE:
+			case City1Package.HOUSE__TYPE:
 				return type != TYPE_EDEFAULT;
-			case city1Package.HOUSE__INFO:
+			case City1Package.HOUSE__INFO:
 				return INFO_EDEFAULT == null ? info != null : !INFO_EDEFAULT.equals(info);
 		}
 		return super.eIsSet(featureID);

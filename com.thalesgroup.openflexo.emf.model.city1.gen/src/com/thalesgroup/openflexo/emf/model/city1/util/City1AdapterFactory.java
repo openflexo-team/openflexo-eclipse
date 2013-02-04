@@ -2,31 +2,32 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.util;
 
-import com.thalesgroup.openflexo.emf.model.city1.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import com.thalesgroup.openflexo.emf.model.city1.City;
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.House;
+import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Package
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Package
  * @generated
  */
-public class city1AdapterFactory extends AdapterFactoryImpl {
+public class City1AdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static city1Package modelPackage;
+	protected static City1Package modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -34,9 +35,9 @@ public class city1AdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public city1AdapterFactory() {
+	public City1AdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = city1Package.eINSTANCE;
+			modelPackage = City1Package.eINSTANCE;
 		}
 	}
 
@@ -65,8 +66,8 @@ public class city1AdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected city1Switch<Adapter> modelSwitch =
-		new city1Switch<Adapter>() {
+	protected City1Switch<Adapter> modelSwitch =
+		new City1Switch<Adapter>() {
 			@Override
 			public Adapter caseCity(City object) {
 				return createCityAdapter();
@@ -153,4 +154,4 @@ public class city1AdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //city1AdapterFactory
+} //City1AdapterFactory

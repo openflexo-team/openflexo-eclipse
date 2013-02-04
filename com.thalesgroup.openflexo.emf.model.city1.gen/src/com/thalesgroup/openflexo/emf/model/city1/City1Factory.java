@@ -9,17 +9,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Package
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Package
  * @generated
  */
-public interface city1Factory extends EFactory {
+public interface City1Factory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	city1Factory eINSTANCE = com.thalesgroup.openflexo.emf.model.city1.impl.city1FactoryImpl.init();
+	City1Factory eINSTANCE = com.thalesgroup.openflexo.emf.model.city1.impl.City1FactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>City</em>'.
@@ -55,6 +55,6 @@ public interface city1Factory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	city1Package getcity1Package();
+	City1Package getCity1Package();
 
-} //city1Factory
+} //City1Factory

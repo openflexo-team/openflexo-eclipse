@@ -3,7 +3,6 @@
 package com.thalesgroup.openflexo.emf.model.city1;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getCity()
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity()
  * @model
  * @generated
  */
@@ -35,7 +34,7 @@ public interface City extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Houses</em>' containment reference list.
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getCity_Houses()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity_Houses()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -51,7 +50,7 @@ public interface City extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Residents</em>' containment reference list.
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getCity_Residents()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity_Residents()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -67,7 +66,7 @@ public interface City extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getCity_Name()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity_Name()
 	 * @model required="true"
 	 * @generated
 	 */

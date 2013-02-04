@@ -3,18 +3,12 @@
 package com.thalesgroup.openflexo.emf.model.city1.provider;
 
 
-import com.thalesgroup.openflexo.emf.model.city1.House;
-import com.thalesgroup.openflexo.emf.model.city1.HouseType;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -25,6 +19,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.House;
+import com.thalesgroup.openflexo.emf.model.city1.HouseType;
 
 /**
  * This is the item provider adapter for a {@link com.thalesgroup.openflexo.emf.model.city1.House} object.
@@ -81,7 +79,7 @@ public class HouseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_House_owner_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_House_owner_feature", "_UI_House_type"),
-				 city1Package.Literals.HOUSE__OWNER,
+				 City1Package.Literals.HOUSE__OWNER,
 				 true,
 				 false,
 				 false,
@@ -103,7 +101,7 @@ public class HouseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_House_type_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_House_type_feature", "_UI_House_type"),
-				 city1Package.Literals.HOUSE__TYPE,
+				 City1Package.Literals.HOUSE__TYPE,
 				 true,
 				 false,
 				 false,
@@ -125,7 +123,7 @@ public class HouseItemProvider
 				 getResourceLocator(),
 				 getString("_UI_House_info_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_House_info_feature", "_UI_House_type"),
-				 city1Package.Literals.HOUSE__INFO,
+				 City1Package.Literals.HOUSE__INFO,
 				 true,
 				 false,
 				 false,
@@ -172,9 +170,9 @@ public class HouseItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(House.class)) {
-			case city1Package.HOUSE__OWNER:
-			case city1Package.HOUSE__TYPE:
-			case city1Package.HOUSE__INFO:
+			case City1Package.HOUSE__OWNER:
+			case City1Package.HOUSE__TYPE:
+			case City1Package.HOUSE__INFO:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

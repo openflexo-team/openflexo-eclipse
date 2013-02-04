@@ -2,26 +2,22 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.impl;
 
-import com.thalesgroup.openflexo.emf.model.city1.City;
-import com.thalesgroup.openflexo.emf.model.city1.House;
-import com.thalesgroup.openflexo.emf.model.city1.Resident;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import com.thalesgroup.openflexo.emf.model.city1.City;
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.House;
+import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
  * <!-- begin-user-doc -->
@@ -95,7 +91,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return city1Package.Literals.CITY;
+		return City1Package.Literals.CITY;
 	}
 
 	/**
@@ -105,7 +101,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 */
 	public EList<House> getHouses() {
 		if (houses == null) {
-			houses = new EObjectContainmentEList<House>(House.class, this, city1Package.CITY__HOUSES);
+			houses = new EObjectContainmentEList<House>(House.class, this, City1Package.CITY__HOUSES);
 		}
 		return houses;
 	}
@@ -117,7 +113,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 */
 	public EList<Resident> getResidents() {
 		if (residents == null) {
-			residents = new EObjectContainmentEList<Resident>(Resident.class, this, city1Package.CITY__RESIDENTS);
+			residents = new EObjectContainmentEList<Resident>(Resident.class, this, City1Package.CITY__RESIDENTS);
 		}
 		return residents;
 	}
@@ -140,7 +136,7 @@ public class CityImpl extends EObjectImpl implements City {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, city1Package.CITY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, City1Package.CITY__NAME, oldName, name));
 	}
 
 	/**
@@ -151,9 +147,9 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case city1Package.CITY__HOUSES:
+			case City1Package.CITY__HOUSES:
 				return ((InternalEList<?>)getHouses()).basicRemove(otherEnd, msgs);
-			case city1Package.CITY__RESIDENTS:
+			case City1Package.CITY__RESIDENTS:
 				return ((InternalEList<?>)getResidents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -167,11 +163,11 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case city1Package.CITY__HOUSES:
+			case City1Package.CITY__HOUSES:
 				return getHouses();
-			case city1Package.CITY__RESIDENTS:
+			case City1Package.CITY__RESIDENTS:
 				return getResidents();
-			case city1Package.CITY__NAME:
+			case City1Package.CITY__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -186,15 +182,15 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case city1Package.CITY__HOUSES:
+			case City1Package.CITY__HOUSES:
 				getHouses().clear();
 				getHouses().addAll((Collection<? extends House>)newValue);
 				return;
-			case city1Package.CITY__RESIDENTS:
+			case City1Package.CITY__RESIDENTS:
 				getResidents().clear();
 				getResidents().addAll((Collection<? extends Resident>)newValue);
 				return;
-			case city1Package.CITY__NAME:
+			case City1Package.CITY__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -209,13 +205,13 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case city1Package.CITY__HOUSES:
+			case City1Package.CITY__HOUSES:
 				getHouses().clear();
 				return;
-			case city1Package.CITY__RESIDENTS:
+			case City1Package.CITY__RESIDENTS:
 				getResidents().clear();
 				return;
-			case city1Package.CITY__NAME:
+			case City1Package.CITY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -230,11 +226,11 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case city1Package.CITY__HOUSES:
+			case City1Package.CITY__HOUSES:
 				return houses != null && !houses.isEmpty();
-			case city1Package.CITY__RESIDENTS:
+			case City1Package.CITY__RESIDENTS:
 				return residents != null && !residents.isEmpty();
-			case city1Package.CITY__NAME:
+			case City1Package.CITY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);

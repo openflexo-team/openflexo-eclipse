@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getHouse()
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getHouse()
  * @model
  * @generated
  */
@@ -33,7 +33,7 @@ public interface House extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owner</em>' reference.
 	 * @see #setOwner(Resident)
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getHouse_Owner()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getHouse_Owner()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ public interface House extends EObject {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see com.thalesgroup.openflexo.emf.model.city1.HouseType
 	 * @see #setType(HouseType)
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getHouse_Type()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getHouse_Type()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -88,7 +88,7 @@ public interface House extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Info</em>' attribute.
 	 * @see #setInfo(String)
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getHouse_Info()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getHouse_Info()
 	 * @model required="true"
 	 * @generated
 	 */

@@ -2,12 +2,11 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.tests;
 
-import com.thalesgroup.openflexo.emf.model.city1.Resident;
-import com.thalesgroup.openflexo.emf.model.city1.city1Factory;
-
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
+
+import com.thalesgroup.openflexo.emf.model.city1.City1Factory;
+import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,7 +71,7 @@ public class ResidentTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(city1Factory.eINSTANCE.createResident());
+		setFixture(City1Factory.eINSTANCE.createResident());
 	}
 
 	/**

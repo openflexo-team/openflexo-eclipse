@@ -2,12 +2,14 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.util;
 
-import com.thalesgroup.openflexo.emf.model.city1.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import com.thalesgroup.openflexo.emf.model.city1.City;
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.House;
+import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,17 +21,17 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Package
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Package
  * @generated
  */
-public class city1Switch<T> extends Switch<T> {
+public class City1Switch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static city1Package modelPackage;
+	protected static City1Package modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -37,9 +39,9 @@ public class city1Switch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public city1Switch() {
+	public City1Switch() {
 		if (modelPackage == null) {
-			modelPackage = city1Package.eINSTANCE;
+			modelPackage = City1Package.eINSTANCE;
 		}
 	}
 
@@ -66,19 +68,19 @@ public class city1Switch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case city1Package.CITY: {
+			case City1Package.CITY: {
 				City city = (City)theEObject;
 				T result = caseCity(city);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case city1Package.HOUSE: {
+			case City1Package.HOUSE: {
 				House house = (House)theEObject;
 				T result = caseHouse(house);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case city1Package.RESIDENT: {
+			case City1Package.RESIDENT: {
 				Resident resident = (Resident)theEObject;
 				T result = caseResident(resident);
 				if (result == null) result = defaultCase(theEObject);
@@ -149,4 +151,4 @@ public class city1Switch<T> extends Switch<T> {
 		return null;
 	}
 
-} //city1Switch
+} //City1Switch

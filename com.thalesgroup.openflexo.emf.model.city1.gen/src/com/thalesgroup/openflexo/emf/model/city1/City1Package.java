@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Factory
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Factory
  * @model kind="package"
  * @generated
  */
-public interface city1Package extends EPackage {
+public interface City1Package extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -54,14 +54,14 @@ public interface city1Package extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	city1Package eINSTANCE = com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl.init();
+	City1Package eINSTANCE = com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link com.thalesgroup.openflexo.emf.model.city1.impl.CityImpl <em>City</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.CityImpl
-	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getCity()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getCity()
 	 * @generated
 	 */
 	int CITY = 0;
@@ -107,7 +107,7 @@ public interface city1Package extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl
-	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getHouse()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getHouse()
 	 * @generated
 	 */
 	int HOUSE = 1;
@@ -153,7 +153,7 @@ public interface city1Package extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.ResidentImpl
-	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getResident()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getResident()
 	 * @generated
 	 */
 	int RESIDENT = 2;
@@ -181,7 +181,7 @@ public interface city1Package extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.thalesgroup.openflexo.emf.model.city1.HouseType
-	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getHouseType()
+	 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getHouseType()
 	 * @generated
 	 */
 	int HOUSE_TYPE = 3;
@@ -311,7 +311,7 @@ public interface city1Package extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	city1Factory getcity1Factory();
+	City1Factory getCity1Factory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -331,7 +331,7 @@ public interface city1Package extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.CityImpl
-		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getCity()
+		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getCity()
 		 * @generated
 		 */
 		EClass CITY = eINSTANCE.getCity();
@@ -365,7 +365,7 @@ public interface city1Package extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl
-		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getHouse()
+		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getHouse()
 		 * @generated
 		 */
 		EClass HOUSE = eINSTANCE.getHouse();
@@ -399,7 +399,7 @@ public interface city1Package extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.ResidentImpl
-		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getResident()
+		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getResident()
 		 * @generated
 		 */
 		EClass RESIDENT = eINSTANCE.getResident();
@@ -417,11 +417,11 @@ public interface city1Package extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.thalesgroup.openflexo.emf.model.city1.HouseType
-		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.city1PackageImpl#getHouseType()
+		 * @see com.thalesgroup.openflexo.emf.model.city1.impl.City1PackageImpl#getHouseType()
 		 * @generated
 		 */
 		EEnum HOUSE_TYPE = eINSTANCE.getHouseType();
 
 	}
 
-} //city1Package
+} //City1Package

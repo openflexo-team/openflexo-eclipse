@@ -4,7 +4,6 @@ package com.thalesgroup.openflexo.emf.model.city1.tests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
 import junit.textui.TestRunner;
 
 /**
@@ -13,7 +12,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class city1Tests extends TestSuite {
+public class City1Tests extends TestSuite {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -30,7 +29,7 @@ public class city1Tests extends TestSuite {
 	 * @generated
 	 */
 	public static Test suite() {
-		TestSuite suite = new city1Tests("city1 Tests");
+		TestSuite suite = new City1Tests("city1 Tests");
 		return suite;
 	}
 
@@ -39,8 +38,8 @@ public class city1Tests extends TestSuite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public city1Tests(String name) {
+	public City1Tests(String name) {
 		super(name);
 	}
 
-} //city1Tests
+} //City1Tests

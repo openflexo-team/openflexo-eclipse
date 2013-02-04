@@ -10,7 +10,7 @@
     providerRootExtendsClass="" editPluginID="com.thalesgroup.openflexo.emf.model.city1.gen.edit"
     editorPluginID="com.thalesgroup.openflexo.emf.model.city1.gen.editor" testsPluginID="com.thalesgroup.openflexo.emf.model.city1.gen.tests">
   <foreignModel>city1.ecore</foreignModel>
-  <genPackages prefix="city1" basePackage="com.thalesgroup.openflexo.emf.model" disposableProviderFactory="true"
+  <genPackages prefix="City1" basePackage="com.thalesgroup.openflexo.emf.model" disposableProviderFactory="true"
       ecorePackage="city1.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="city1.ecore#//HouseType">
       <genEnumLiterals ecoreEnumLiteral="city1.ecore#//HouseType/Mansion"/>

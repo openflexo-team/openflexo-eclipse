@@ -13,76 +13,52 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
-import org.eclipse.emf.common.CommonPlugin;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.xmi.XMLResource;
-
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.dialogs.MessageDialog;
-
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-
 import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.ModifyEvent;
-
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
-import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.ui.part.ISetSelectionTarget;
-
-import com.thalesgroup.openflexo.emf.model.city1.city1Factory;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-import com.thalesgroup.openflexo.emf.model.city1.provider.City1EditPlugin;
-
-
-import org.eclipse.core.runtime.Path;
-
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.ISetSelectionTarget;
+
+import com.thalesgroup.openflexo.emf.model.city1.City1Factory;
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.provider.City1EditPlugin;
 
 
 /**
@@ -91,7 +67,7 @@ import org.eclipse.ui.PartInitException;
  * <!-- end-user-doc -->
  * @generated
  */
-public class city1ModelWizard extends Wizard implements INewWizard {
+public class City1ModelWizard extends Wizard implements INewWizard {
 	/**
 	 * The supported extensions for created files.
 	 * <!-- begin-user-doc -->
@@ -99,7 +75,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public static final List<String> FILE_EXTENSIONS =
-		Collections.unmodifiableList(Arrays.asList(City1EditorPlugin.INSTANCE.getString("_UI_city1EditorFilenameExtensions").split("\\s*,\\s*")));
+		Collections.unmodifiableList(Arrays.asList(City1EditorPlugin.INSTANCE.getString("_UI_City1EditorFilenameExtensions").split("\\s*,\\s*")));
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -108,7 +84,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public static final String FORMATTED_FILE_EXTENSIONS =
-		City1EditorPlugin.INSTANCE.getString("_UI_city1EditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+		City1EditorPlugin.INSTANCE.getString("_UI_City1EditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -116,7 +92,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected city1Package _city1Package = city1Package.eINSTANCE;
+	protected City1Package city1Package = City1Package.eINSTANCE;
 
 	/**
 	 * This caches an instance of the model factory.
@@ -124,7 +100,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected city1Factory _city1Factory = _city1Package.getcity1Factory();
+	protected City1Factory city1Factory = city1Package.getCity1Factory();
 
 	/**
 	 * This is the file creation page.
@@ -132,7 +108,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected city1ModelWizardNewFileCreationPage newFileCreationPage;
+	protected City1ModelWizardNewFileCreationPage newFileCreationPage;
 
 	/**
 	 * This is the initial object creation page.
@@ -140,7 +116,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected city1ModelWizardInitialObjectCreationPage initialObjectCreationPage;
+	protected City1ModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
 	/**
 	 * Remember the selection during initialization for populating the default container.
@@ -176,7 +152,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(City1EditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(City1EditorPlugin.INSTANCE.getImage("full/wizban/Newcity1")));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(City1EditorPlugin.INSTANCE.getImage("full/wizban/NewCity1")));
 	}
 
 	/**
@@ -188,7 +164,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (EClassifier eClassifier : _city1Package.getEClassifiers()) {
+			for (EClassifier eClassifier : city1Package.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass)eClassifier;
 					if (!eClass.isAbstract()) {
@@ -208,8 +184,8 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)_city1Package.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		EObject rootObject = _city1Factory.create(eClass);
+		EClass eClass = (EClass)city1Package.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EObject rootObject = city1Factory.create(eClass);
 		return rootObject;
 	}
 
@@ -310,14 +286,14 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class city1ModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+	public class City1ModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public city1ModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
+		public City1ModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
 			super(pageId, selection);
 		}
 
@@ -357,7 +333,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class city1ModelWizardInitialObjectCreationPage extends WizardPage {
+	public class City1ModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -385,7 +361,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public city1ModelWizardInitialObjectCreationPage(String pageId) {
+		public City1ModelWizardInitialObjectCreationPage(String pageId) {
 			super(pageId);
 		}
 
@@ -570,10 +546,10 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
-		newFileCreationPage = new city1ModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(City1EditorPlugin.INSTANCE.getString("_UI_city1ModelWizard_label"));
-		newFileCreationPage.setDescription(City1EditorPlugin.INSTANCE.getString("_UI_city1ModelWizard_description"));
-		newFileCreationPage.setFileName(City1EditorPlugin.INSTANCE.getString("_UI_city1EditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage = new City1ModelWizardNewFileCreationPage("Whatever", selection);
+		newFileCreationPage.setTitle(City1EditorPlugin.INSTANCE.getString("_UI_City1ModelWizard_label"));
+		newFileCreationPage.setDescription(City1EditorPlugin.INSTANCE.getString("_UI_City1ModelWizard_description"));
+		newFileCreationPage.setFileName(City1EditorPlugin.INSTANCE.getString("_UI_City1EditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -599,7 +575,7 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = City1EditorPlugin.INSTANCE.getString("_UI_city1EditorFilenameDefaultBase");
+					String defaultModelBaseFilename = City1EditorPlugin.INSTANCE.getString("_UI_City1EditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
@@ -609,8 +585,8 @@ public class city1ModelWizard extends Wizard implements INewWizard {
 				}
 			}
 		}
-		initialObjectCreationPage = new city1ModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(City1EditorPlugin.INSTANCE.getString("_UI_city1ModelWizard_label"));
+		initialObjectCreationPage = new City1ModelWizardInitialObjectCreationPage("Whatever2");
+		initialObjectCreationPage.setTitle(City1EditorPlugin.INSTANCE.getString("_UI_City1ModelWizard_label"));
 		initialObjectCreationPage.setDescription(City1EditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
 	}

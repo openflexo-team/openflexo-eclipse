@@ -3,7 +3,6 @@
 package com.thalesgroup.openflexo.emf.model.city1.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

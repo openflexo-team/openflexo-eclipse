@@ -2,20 +2,19 @@
  */
 package com.thalesgroup.openflexo.emf.model.city1.impl;
 
-import com.thalesgroup.openflexo.emf.model.city1.City;
-import com.thalesgroup.openflexo.emf.model.city1.House;
-import com.thalesgroup.openflexo.emf.model.city1.HouseType;
-import com.thalesgroup.openflexo.emf.model.city1.Resident;
-import com.thalesgroup.openflexo.emf.model.city1.city1Factory;
-import com.thalesgroup.openflexo.emf.model.city1.city1Package;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import com.thalesgroup.openflexo.emf.model.city1.City;
+import com.thalesgroup.openflexo.emf.model.city1.City1Factory;
+import com.thalesgroup.openflexo.emf.model.city1.City1Package;
+import com.thalesgroup.openflexo.emf.model.city1.House;
+import com.thalesgroup.openflexo.emf.model.city1.HouseType;
+import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +22,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class city1PackageImpl extends EPackageImpl implements city1Package {
+public class City1PackageImpl extends EPackageImpl implements City1Package {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,12 +62,12 @@ public class city1PackageImpl extends EPackageImpl implements city1Package {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#eNS_URI
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private city1PackageImpl() {
-		super(eNS_URI, city1Factory.eINSTANCE);
+	private City1PackageImpl() {
+		super(eNS_URI, City1Factory.eINSTANCE);
 	}
 
 	/**
@@ -81,7 +80,7 @@ public class city1PackageImpl extends EPackageImpl implements city1Package {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link city1Package#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link City1Package#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,27 +89,27 @@ public class city1PackageImpl extends EPackageImpl implements city1Package {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static city1Package init() {
-		if (isInited) return (city1Package)EPackage.Registry.INSTANCE.getEPackage(city1Package.eNS_URI);
+	public static City1Package init() {
+		if (isInited) return (City1Package)EPackage.Registry.INSTANCE.getEPackage(City1Package.eNS_URI);
 
 		// Obtain or create and register package
-		city1PackageImpl thecity1Package = (city1PackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof city1PackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new city1PackageImpl());
+		City1PackageImpl theCity1Package = (City1PackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof City1PackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new City1PackageImpl());
 
 		isInited = true;
 
 		// Create package meta-data objects
-		thecity1Package.createPackageContents();
+		theCity1Package.createPackageContents();
 
 		// Initialize created meta-data
-		thecity1Package.initializePackageContents();
+		theCity1Package.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		thecity1Package.freeze();
+		theCity1Package.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(city1Package.eNS_URI, thecity1Package);
-		return thecity1Package;
+		EPackage.Registry.INSTANCE.put(City1Package.eNS_URI, theCity1Package);
+		return theCity1Package;
 	}
 
 	/**
@@ -217,8 +216,8 @@ public class city1PackageImpl extends EPackageImpl implements city1Package {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public city1Factory getcity1Factory() {
-		return (city1Factory)getEFactoryInstance();
+	public City1Factory getCity1Factory() {
+		return (City1Factory)getEFactoryInstance();
 	}
 
 	/**
@@ -309,4 +308,4 @@ public class city1PackageImpl extends EPackageImpl implements city1Package {
 		createResource(eNS_URI);
 	}
 
-} //city1PackageImpl
+} //City1PackageImpl

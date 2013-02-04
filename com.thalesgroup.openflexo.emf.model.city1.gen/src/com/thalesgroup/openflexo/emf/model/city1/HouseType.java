@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>House Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see com.thalesgroup.openflexo.emf.model.city1.city1Package#getHouseType()
+ * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getHouseType()
  * @model
  * @generated
  */
