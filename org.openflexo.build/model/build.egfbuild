@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildcore:Chain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_arwgAHVVEeKM9IYNucCsaw" name="OpenFlexo">
+  <jobs xmi:id="_k2SaUHVVEeKM9IYNucCsaw" name="city1">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_B3UrIHVXEeKM9IYNucCsaw" type="Result"/>
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_CxxhMHVXEeKM9IYNucCsaw">
+      <components xsi:type="buildstep:Feature" xmi:id="_E5bKMHVXEeKM9IYNucCsaw" id="com.thalesgroup.openflexo.emf.model.city1.feature"/>
+    </steps>
+    <steps xsi:type="buildstep:PublishStep" xmi:id="_Hk7uMHVXEeKM9IYNucCsaw" component="_E5bKMHVXEeKM9IYNucCsaw"/>
+  </jobs>
+  <jobs xmi:id="_l-D6sHVVEeKM9IYNucCsaw" name="city2">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_OChcsHVXEeKM9IYNucCsaw" type="Result"/>
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_PGfbIHVXEeKM9IYNucCsaw">
+      <components xsi:type="buildstep:Feature" xmi:id="_P14QsHVXEeKM9IYNucCsaw" id="com.thalesgroup.openflexo.emf.model.city2.feature"/>
+    </steps>
+    <steps xsi:type="buildstep:PublishStep" xmi:id="_hmOF0HVXEeKM9IYNucCsaw" component="_P14QsHVXEeKM9IYNucCsaw"/>
+  </jobs>
+  <jobs xmi:id="_nP_coHVVEeKM9IYNucCsaw" name="emf-m2-exporter">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_V0Q6sHVXEeKM9IYNucCsaw" type="Result"/>
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_XTyMsHVXEeKM9IYNucCsaw">
+      <components xsi:type="buildstep:Feature" xmi:id="_YXS4IHVXEeKM9IYNucCsaw" id="org.openflexo.emfconnector.metamodel.exporter.feature"/>
+    </steps>
+    <steps xsi:type="buildstep:PublishStep" xmi:id="_jirygHVXEeKM9IYNucCsaw" component="_YXS4IHVXEeKM9IYNucCsaw"/>
+  </jobs>
+</buildcore:Chain>

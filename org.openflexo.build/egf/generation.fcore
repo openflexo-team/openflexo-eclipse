@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fcore:FactoryComponent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
+    xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
+    xmlns:types="http://www.eclipse.org/egf/1.0.0/types" xmi:id="_yhr1EPPHEd-1PJ4PFWU1aA" name="generation">
+  <viewpointContainer xmi:id="_zsWRYPPHEd-1PJ4PFWU1aA">
+    <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_0AKlQPPHEd-1PJ4PFWU1aA">
+      <domains xmi:type="domain:EMFDomain" xmi:id="_0oZC4PPHEd-1PJ4PFWU1aA" name=""
+          helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper" uri="platform:/resource/org.openflexo.build/model/build.egfbuild"/>
+    </viewpoints>
+  </viewpointContainer>
+  <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_3P4pkPPHEd-1PJ4PFWU1aA">
+    <invocations xmi:id="_HOjFsPPIEd-1PJ4PFWU1aA" invokedActivity="fcore:FactoryComponent platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_N4pRwI6UEd-e7viTqNBNrA">
+      <invocationContractContainer xmi:id="_HOjFsfPIEd-1PJ4PFWU1aA">
+        <invocationContracts xmi:id="_HOjFsvPIEd-1PJ4PFWU1aA" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_ad5FkY6VEd-e7viTqNBNrA">
+          <type xmi:type="domain:TypeDomain" xmi:id="_H9fPUPPIEd-1PJ4PFWU1aA" domain="#_0oZC4PPHEd-1PJ4PFWU1aA"/>
+        </invocationContracts>
+        <invocationContracts xmi:id="_HOjFs_PIEd-1PJ4PFWU1aA" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_npIcUJlgEd-cRYVfj6AwNg">
+          <type xmi:type="types:TypeString" xmi:id="_KX3nEPPIEd-1PJ4PFWU1aA" value="platform:/resource/org.openflexo.eclipse.build/generated"/>
+        </invocationContracts>
+      </invocationContractContainer>
+    </invocations>
+  </orchestration>
+</fcore:FactoryComponent>

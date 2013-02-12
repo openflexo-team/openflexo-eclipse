@@ -1,11 +1,12 @@
+/**
+ * 
+ */
 package org.openflexo.emfconnector.metamodel.exporter;
 
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -14,7 +15,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.window.IShellProvider;
+import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -23,72 +24,59 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class EMFMetaModelExporterDialog extends Dialog {
-
-	protected Map<String, Object> uriToPackage = null;
-	protected Map<String, Object> extensionToResourceFactory = null;
+/**
+ * @author ASUS
+ * 
+ */
+public class EMFMetaModelExportWizardPage extends WizardPage {
 
 	protected String exportPath = null;
 	protected String uri = null;
 	protected EPackage ePackage = null;
 
-	public EMFMetaModelExporterDialog(IShellProvider parentShell) {
-		super(parentShell);
+	protected EMFMetaModelExportWizardPage() {
+		super("EMF Meta Model");
+		setTitle(getName());
 	}
 
-	protected EMFMetaModelExporterDialog(Shell parentShell) {
-		super(parentShell);
-	}
-
-	public void setUriToPackage(Map<String, Object> uriToPackage) {
-		this.uriToPackage = uriToPackage;
-	}
-
-	public void setExtensionToResourceFactory(
-			Map<String, Object> extensionToResourceFactory) {
-		this.extensionToResourceFactory = extensionToResourceFactory;
-	}
-
-	public String getExportPath() {
-		return exportPath;
-	}
-
-	public String getUri() {
-		return uri;
-	}
-
-	public EPackage getEPackage() {
-		return ePackage;
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets
+	 * .Composite)
+	 */
 	@Override
-	protected Control createDialogArea(Composite parent) {
-		GridLayout gridLayout = new GridLayout(3, false);
-		parent.setLayout(gridLayout);
+	public void createControl(final Composite parent) {
+		GridLayout gridLayout1 = new GridLayout();
+		parent.setLayout(gridLayout1);
 
-		Label exportPathLabel = new Label(parent, SWT.NONE);
+		Composite container = new Composite(parent, SWT.NONE);
+		GridLayout gridLayout3 = new GridLayout(3, false);
+		container.setLayout(gridLayout3);
+
+		Label exportPathLabel = new Label(container, SWT.NONE);
 		exportPathLabel.setText("Export Path :");
-		final Text exportPathText = new Text(parent, SWT.NONE);
+		final Text exportPathText = new Text(container, SWT.NONE);
 		exportPathText.addModifyListener(new ModifyListener() {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
 				exportPath = ((Text) e.widget).getText();
+				setPageComplete(checkPageComplete());
 			}
 		});
-		Button exportPathButton = new Button(parent, SWT.PUSH);
+		Button exportPathButton = new Button(container, SWT.PUSH);
 		exportPathButton.setText("...");
 		exportPathButton.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				DirectoryDialog directoryDialog = new DirectoryDialog(
-						getParentShell());
+				DirectoryDialog directoryDialog = new DirectoryDialog(parent
+						.getShell());
 				if (exportPathText.getText() != null) {
 					directoryDialog.setFilterPath(exportPathText.getText());
 				}
@@ -97,6 +85,7 @@ public class EMFMetaModelExporterDialog extends Dialog {
 					exportPathText.setText(value);
 					exportPath = value;
 				}
+				setPageComplete(checkPageComplete());
 			}
 
 			@Override
@@ -105,7 +94,7 @@ public class EMFMetaModelExporterDialog extends Dialog {
 			}
 		});
 
-		TableViewer uriToPackageTableViewer = new TableViewer(parent,
+		TableViewer uriToPackageTableViewer = new TableViewer(container,
 				SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION
 						| SWT.BORDER);
 		uriToPackageTableViewer.getTable().setHeaderVisible(true);
@@ -165,18 +154,30 @@ public class EMFMetaModelExporterDialog extends Dialog {
 							uri = null;
 							ePackage = null;
 						}
-
+						setPageComplete(checkPageComplete());
 					}
 				});
-		uriToPackageTableViewer.setInput(uriToPackage.entrySet());
+		uriToPackageTableViewer.setInput(EPackage.Registry.INSTANCE.entrySet());
 
-		return parent;
+		// Required to avoid an error in the system
+		setControl(parent);
+		setPageComplete(false);
 	}
 
-	@Override
-	protected void okPressed() {
-		if (exportPath != null && uri != null && ePackage != null) {
-			super.okPressed();
-		}
+	protected boolean checkPageComplete() {
+		return getMetaModelUri() != null && getMetaModelEPackage() != null
+				&& getExportPath() != null;
+	}
+
+	public String getMetaModelUri() {
+		return uri;
+	}
+
+	public EPackage getMetaModelEPackage() {
+		return ePackage;
+	}
+
+	public String getExportPath() {
+		return exportPath;
 	}
 }
