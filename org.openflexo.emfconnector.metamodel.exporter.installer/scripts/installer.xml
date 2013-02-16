@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Installer" default="installer">
+	<property name="work.dir" value="../work"/>
+
+	<property name="install.application.dir" value=""/>
+	<property name="install.profile" value=""/>
+
+	<!-- Deploy environment -->
+	<target name="deploy">
+		<available file="${deploy.dir}" property="${deploy.name}.exist"/>
+		<antcall target="do.deploy"/>
+	</target>
+	<target name="do.deploy" unless="${deploy.name}.exist">
+		<echo>Do deploy ${deploy.name} in ${deploy.target}</echo>
+		<antcall target="${deploy.target}"/>
+	</target>
+
+	<!-- Director -->
+	<property name="director.zip" value="../resources/director_latest.zip"/>
+	<property name="director.dir" value="${work.dir}/director"/>
+	<property name="director.equinox.launcher.jar" value="${director.dir}/plugins/org.eclipse.equinox.launcher_1.3.0.v20120522-1813.jar"/>
+	<target name="director.deploy">
+		<antcall target="deploy">
+			<param name="deploy.name" value="director.deploy" />
+			<param name="deploy.target" value="do.prepare.deploy.director" />
+			<param name="deploy.dir" value="${director.dir}" />
+		</antcall>
+	</target>
+	<target name="do.prepare.deploy.director">
+		<unzip src="${director.zip}" dest="${director.dir}/.."/>
+	</target>
+	
+	<!-- EMFConnector MetaModel Exporter -->
+	<property name="emfconnector.metamodel.exporter.updatesite.zip" value="../resources/emfconnector.metamodel.exporter.*.zip"/>
+	<property name="emfconnector.metamodel.exporter.updatesite.dir" value="${work.dir}/emfconnector.metamodel.exporter.updatesite"/>
+	<target name="prepare.updatesite.emfconnector.metamodel.exporter">
+		<antcall target="deploy">
+			<param name="deploy.name" value="emfconnector.metamodel.exporter.updatesite" />
+			<param name="deploy.target" value="do.prepare.updatesite.emfconnector.metamodel.exporter" />
+			<param name="deploy.dir" value="${emfconnector.metamodel.exporter.updatesite.dir}" />
+		</antcall>
+		<makeurl file="${emfconnector.metamodel.exporter.updatesite.dir}" property="emfconnector.metamodel.exporter.updatesite.url"/>
+	</target>
+
+	<target name="do.prepare.updatesite.emfconnector.metamodel.exporter">
+		<unzip src="${emfconnector.metamodel.exporter.updatesite.zip}" dest="${emfconnector.metamodel.exporter.updatesite.dir}" />
+	</target>
+	<!-- Installer -->
+	<property name="install.workspace.dir" value="${work.dir}/workspace"/>
+	<property name="install.repositories.url.list" value="${emfconnector.metamodel.exporter.updatesite.url}"/>
+	<property name="install.iu.name.list" value="org.openflexo.emfconnector.metamodel.exporter.feature.group"/>
+    <target name="installer" depends="director.deploy">
+		<java fork="true" jar="${director.equinox.launcher.jar}" dir="${director.dir}" failonerror="true">
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-XX:MaxPermSize=256m"/>
+			<jvmarg value="-Declipse.p2.mirrors=false" />
+			<arg value="-data" />
+			<arg value="${install.workspace.dir}" />
+			<arg value="-application"/>
+			<arg value="org.eclipse.equinox.p2.director"/>
+			<arg value="-repository" />
+			<arg value="${install.repositories.url.list}" />
+			<arg value="-destination" />
+			<arg value="${install.application.dir}" />
+			<arg value="-profile" />
+			<arg value="${install.profile}" />
+			<arg value="-profileProperties"/>
+			<arg value="org.eclipse.update.install.features=true"/>
+			<arg value="-installIU" />
+			<arg value="{install.iu.name.list}" />
+		</java>
+    </target>
+</project>
