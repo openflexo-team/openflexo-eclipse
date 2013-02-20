@@ -9,6 +9,7 @@ import com.thalesgroup.openflexo.emf.model.city2.City2Package;
 import com.thalesgroup.openflexo.emf.model.city2.House;
 import com.thalesgroup.openflexo.emf.model.city2.Mansion;
 
+import com.thalesgroup.openflexo.emf.model.city2.Mayor;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -50,6 +51,13 @@ public class City2PackageImpl extends EPackageImpl implements City2Package {
 	 * @generated
 	 */
 	private EClass appartmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mayorEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -135,6 +143,15 @@ public class City2PackageImpl extends EPackageImpl implements City2Package {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getCity_Mayor() {
+		return (EReference)cityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHouse() {
 		return houseEClass;
 	}
@@ -189,6 +206,24 @@ public class City2PackageImpl extends EPackageImpl implements City2Package {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMayor() {
+		return mayorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMayor_Name() {
+		return (EAttribute)mayorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public City2Factory getCity2Factory() {
 		return (City2Factory)getEFactoryInstance();
 	}
@@ -214,6 +249,7 @@ public class City2PackageImpl extends EPackageImpl implements City2Package {
 		// Create classes and their features
 		cityEClass = createEClass(CITY);
 		createEReference(cityEClass, CITY__HOUSES);
+		createEReference(cityEClass, CITY__MAYOR);
 
 		houseEClass = createEClass(HOUSE);
 		createEAttribute(houseEClass, HOUSE__OWNER);
@@ -223,6 +259,9 @@ public class City2PackageImpl extends EPackageImpl implements City2Package {
 
 		appartmentEClass = createEClass(APPARTMENT);
 		createEAttribute(appartmentEClass, APPARTMENT__LABEL);
+
+		mayorEClass = createEClass(MAYOR);
+		createEAttribute(mayorEClass, MAYOR__NAME);
 	}
 
 	/**
@@ -259,6 +298,7 @@ public class City2PackageImpl extends EPackageImpl implements City2Package {
 		// Initialize classes and features; add operations and parameters
 		initEClass(cityEClass, City.class, "City", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCity_Houses(), this.getHouse(), null, "houses", null, 0, -1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCity_Mayor(), this.getMayor(), null, "mayor", null, 1, 1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(houseEClass, House.class, "House", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHouse_Owner(), ecorePackage.getEString(), "owner", null, 1, 1, House.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -268,6 +308,9 @@ public class City2PackageImpl extends EPackageImpl implements City2Package {
 
 		initEClass(appartmentEClass, Appartment.class, "Appartment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAppartment_Label(), ecorePackage.getEString(), "label", null, 1, 1, Appartment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mayorEClass, Mayor.class, "Mayor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMayor_Name(), ecorePackage.getEString(), "name", null, 1, 1, Mayor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

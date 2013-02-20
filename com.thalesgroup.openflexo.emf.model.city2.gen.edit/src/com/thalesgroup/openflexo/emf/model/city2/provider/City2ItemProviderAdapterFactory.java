@@ -141,6 +141,29 @@ public class City2ItemProviderAdapterFactory extends City2AdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.thalesgroup.openflexo.emf.model.city2.Mayor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MayorItemProvider mayorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.thalesgroup.openflexo.emf.model.city2.Mayor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMayorAdapter() {
+		if (mayorItemProvider == null) {
+			mayorItemProvider = new MayorItemProvider(this);
+		}
+
+		return mayorItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -242,6 +265,7 @@ public class City2ItemProviderAdapterFactory extends City2AdapterFactory impleme
 		if (cityItemProvider != null) cityItemProvider.dispose();
 		if (mansionItemProvider != null) mansionItemProvider.dispose();
 		if (appartmentItemProvider != null) appartmentItemProvider.dispose();
+		if (mayorItemProvider != null) mayorItemProvider.dispose();
 	}
 
 }

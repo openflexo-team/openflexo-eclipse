@@ -92,6 +92,12 @@ public class City2Switch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case City2Package.MAYOR: {
+				Mayor mayor = (Mayor)theEObject;
+				T result = caseMayor(mayor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -153,6 +159,21 @@ public class City2Switch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAppartment(Appartment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mayor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mayor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMayor(Mayor object) {
 		return null;
 	}
 

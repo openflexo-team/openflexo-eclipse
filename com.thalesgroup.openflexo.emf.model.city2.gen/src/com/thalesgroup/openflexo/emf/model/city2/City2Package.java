@@ -75,13 +75,22 @@ public interface City2Package extends EPackage {
 	int CITY__HOUSES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Mayor</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CITY__MAYOR = 1;
+
+	/**
 	 * The number of structural features of the '<em>City</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CITY_FEATURE_COUNT = 1;
+	int CITY_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link com.thalesgroup.openflexo.emf.model.city2.impl.HouseImpl <em>House</em>}' class.
@@ -187,6 +196,35 @@ public interface City2Package extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link com.thalesgroup.openflexo.emf.model.city2.impl.MayorImpl <em>Mayor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.thalesgroup.openflexo.emf.model.city2.impl.MayorImpl
+	 * @see com.thalesgroup.openflexo.emf.model.city2.impl.City2PackageImpl#getMayor()
+	 * @generated
+	 */
+	int MAYOR = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAYOR__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Mayor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAYOR_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link com.thalesgroup.openflexo.emf.model.city2.City <em>City</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,6 +244,17 @@ public interface City2Package extends EPackage {
 	 * @generated
 	 */
 	EReference getCity_Houses();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link com.thalesgroup.openflexo.emf.model.city2.City#getMayor <em>Mayor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Mayor</em>'.
+	 * @see com.thalesgroup.openflexo.emf.model.city2.City#getMayor()
+	 * @see #getCity()
+	 * @generated
+	 */
+	EReference getCity_Mayor();
 
 	/**
 	 * Returns the meta object for class '{@link com.thalesgroup.openflexo.emf.model.city2.House <em>House</em>}'.
@@ -271,6 +320,27 @@ public interface City2Package extends EPackage {
 	EAttribute getAppartment_Label();
 
 	/**
+	 * Returns the meta object for class '{@link com.thalesgroup.openflexo.emf.model.city2.Mayor <em>Mayor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mayor</em>'.
+	 * @see com.thalesgroup.openflexo.emf.model.city2.Mayor
+	 * @generated
+	 */
+	EClass getMayor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.thalesgroup.openflexo.emf.model.city2.Mayor#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see com.thalesgroup.openflexo.emf.model.city2.Mayor#getName()
+	 * @see #getMayor()
+	 * @generated
+	 */
+	EAttribute getMayor_Name();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -309,6 +379,14 @@ public interface City2Package extends EPackage {
 		 * @generated
 		 */
 		EReference CITY__HOUSES = eINSTANCE.getCity_Houses();
+
+		/**
+		 * The meta object literal for the '<em><b>Mayor</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CITY__MAYOR = eINSTANCE.getCity_Mayor();
 
 		/**
 		 * The meta object literal for the '{@link com.thalesgroup.openflexo.emf.model.city2.impl.HouseImpl <em>House</em>}' class.
@@ -363,6 +441,24 @@ public interface City2Package extends EPackage {
 		 * @generated
 		 */
 		EAttribute APPARTMENT__LABEL = eINSTANCE.getAppartment_Label();
+
+		/**
+		 * The meta object literal for the '{@link com.thalesgroup.openflexo.emf.model.city2.impl.MayorImpl <em>Mayor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.thalesgroup.openflexo.emf.model.city2.impl.MayorImpl
+		 * @see com.thalesgroup.openflexo.emf.model.city2.impl.City2PackageImpl#getMayor()
+		 * @generated
+		 */
+		EClass MAYOR = eINSTANCE.getMayor();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAYOR__NAME = eINSTANCE.getMayor_Name();
 
 	}
 

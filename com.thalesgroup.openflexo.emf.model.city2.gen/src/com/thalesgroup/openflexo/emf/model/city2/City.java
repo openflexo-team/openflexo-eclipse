@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.thalesgroup.openflexo.emf.model.city2.City#getHouses <em>Houses</em>}</li>
+ *   <li>{@link com.thalesgroup.openflexo.emf.model.city2.City#getMayor <em>Mayor</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,5 +39,31 @@ public interface City extends EObject {
 	 * @generated
 	 */
 	EList<House> getHouses();
+
+	/**
+	 * Returns the value of the '<em><b>Mayor</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mayor</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mayor</em>' containment reference.
+	 * @see #setMayor(Mayor)
+	 * @see com.thalesgroup.openflexo.emf.model.city2.City2Package#getCity_Mayor()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Mayor getMayor();
+
+	/**
+	 * Sets the value of the '{@link com.thalesgroup.openflexo.emf.model.city2.City#getMayor <em>Mayor</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mayor</em>' containment reference.
+	 * @see #getMayor()
+	 * @generated
+	 */
+	void setMayor(Mayor value);
 
 } // City

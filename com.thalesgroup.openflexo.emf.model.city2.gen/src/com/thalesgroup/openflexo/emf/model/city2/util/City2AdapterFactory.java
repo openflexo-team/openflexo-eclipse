@@ -84,6 +84,10 @@ public class City2AdapterFactory extends AdapterFactoryImpl {
 				return createAppartmentAdapter();
 			}
 			@Override
+			public Adapter caseMayor(Mayor object) {
+				return createMayorAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -156,6 +160,20 @@ public class City2AdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAppartmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.thalesgroup.openflexo.emf.model.city2.Mayor <em>Mayor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.thalesgroup.openflexo.emf.model.city2.Mayor
+	 * @generated
+	 */
+	public Adapter createMayorAdapter() {
 		return null;
 	}
 

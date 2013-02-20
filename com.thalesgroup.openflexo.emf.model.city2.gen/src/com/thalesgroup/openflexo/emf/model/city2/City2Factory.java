@@ -49,6 +49,15 @@ public interface City2Factory extends EFactory {
 	Appartment createAppartment();
 
 	/**
+	 * Returns a new object of class '<em>Mayor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mayor</em>'.
+	 * @generated
+	 */
+	Mayor createMayor();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
