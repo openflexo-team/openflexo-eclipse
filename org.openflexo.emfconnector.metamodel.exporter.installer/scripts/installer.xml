@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Installer" default="installer">
 	<property name="work.dir" value="../work"/>
-
-	<property name="install.application.dir" value=""/>
-	<property name="install.profile" value=""/>
-
+	
+	<property file="installer.properties" />
+	
 	<!-- Deploy environment -->
 	<target name="deploy">
 		<available file="${deploy.dir}" property="${deploy.name}.exist"/>
@@ -31,8 +30,8 @@
 	</target>
 	
 	<!-- EMFConnector MetaModel Exporter -->
-	<property name="emfconnector.metamodel.exporter.updatesite.zip" value="../resources/emfconnector.metamodel.exporter.*.zip"/>
-	<property name="emfconnector.metamodel.exporter.updatesite.dir" value="${work.dir}/emfconnector.metamodel.exporter.updatesite"/>
+	<property name="emfconnector.metamodel.exporter.updatesite.zip" value="../resources/org.openflexo.emfconnector.metamodel.exporter.zip"/>
+	<property name="emfconnector.metamodel.exporter.updatesite.dir" value="${work.dir}/org.openflexo.emfconnector.metamodel.exporter.updatesite"/>
 	<target name="prepare.updatesite.emfconnector.metamodel.exporter">
 		<antcall target="deploy">
 			<param name="deploy.name" value="emfconnector.metamodel.exporter.updatesite" />
@@ -50,6 +49,7 @@
 	<property name="install.repositories.url.list" value="${emfconnector.metamodel.exporter.updatesite.url}"/>
 	<property name="install.iu.name.list" value="org.openflexo.emfconnector.metamodel.exporter.feature.group"/>
     <target name="installer" depends="director.deploy">
+    	<mkdir dir="${install.workspace.dir}"/>
 		<java fork="true" jar="${director.equinox.launcher.jar}" dir="${director.dir}" failonerror="true">
 			<jvmarg value="-Xmx1024m"/>
 			<jvmarg value="-XX:MaxPermSize=256m"/>
