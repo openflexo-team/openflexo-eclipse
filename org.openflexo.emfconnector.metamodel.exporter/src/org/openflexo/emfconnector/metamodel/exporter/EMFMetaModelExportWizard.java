@@ -16,6 +16,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.EList;
@@ -32,6 +33,7 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+import org.osgi.service.prefs.Preferences;
 
 /**
  * @author ASUS
@@ -39,28 +41,38 @@ import org.osgi.framework.FrameworkUtil;
  */
 public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 
+	/** Export Page. */
 	protected final EMFMetaModelExportWizardPage page;
+
+	/** Plugin org.eclipse.core.runtime. */
+	protected String ORG_ECLIPSE_CORE_RUNTIME_PLUGIN_ID = "org.eclipse.core.runtime";
+	/** Plugin org.eclipse.emf.ecore. */
+	protected String ORG_ECLIPSE_EMF_ECORE_PLUGIN_ID = "org.eclipse.emf.ecore";
+
+	protected Preferences preferences = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
 	/**
 	 * 
+	 * Constructor.
 	 */
 	public EMFMetaModelExportWizard() {
-		page = new EMFMetaModelExportWizardPage();
+		page = new EMFMetaModelExportWizardPage(preferences);
 		addPage(page);
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * 
-	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
-	 * org.eclipse.jface.viewers.IStructuredSelection)
+	 * Follow the link.
+	 * 
+	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
 	 */
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * 
+	 * Follow the link.
 	 * 
 	 * @see org.eclipse.jface.wizard.Wizard#performFinish()
 	 */
@@ -70,35 +82,44 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 		return true;
 	}
 
+	/**
+	 * Export MetaModel.
+	 * 
+	 * @param metaModelUri
+	 * @param metaModelPackage
+	 * @param exportPath
+	 */
 	protected void exportMetaModel(String metaModelUri, EPackage metaModelPackage, String exportPath) {
 		try {
-			URI genModelLocation = EcorePlugin.INSTANCE.getEPackageNsURIToGenModelLocationMap().get(metaModelUri);
-			Resource.Factory genModelFactory = Resource.Factory.Registry.INSTANCE.getFactory(genModelLocation);
-			Resource genModelResource = genModelFactory.createResource(genModelLocation);
-			genModelResource.load(null);
-			EList<EObject> genModelContents = genModelResource.getContents();
-			if (genModelContents.size() == 1 && genModelContents.get(0) instanceof GenModel) {
-				GenModel genModel = (GenModel) genModelContents.get(0);
-				EList<GenPackage> genPackages = genModel.getGenPackages();
-				if (genPackages.size() == 1) {
-					GenPackage genPackage = genPackages.get(0);
-					String fileExtension = genPackage.getFileExtension();
-					Object resourceFactoryObject = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(fileExtension);
-					if (resourceFactoryObject == null) {
-						resourceFactoryObject = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get("*");
-					}
-					Resource.Factory resourceFactory = null;
-					if (resourceFactoryObject instanceof Resource.Factory.Descriptor) {
-						resourceFactory = ((Resource.Factory.Descriptor) resourceFactoryObject).createFactory();
-					} else {
-						resourceFactory = (Resource.Factory) resourceFactoryObject;
-					}
+			URI genModelLocation = EcorePlugin.getEPackageNsURIToGenModelLocationMap().get(metaModelUri);
+			if (genModelLocation != null) {
+				Resource.Factory genModelFactory = Resource.Factory.Registry.INSTANCE.getFactory(genModelLocation);
+				Resource genModelResource = genModelFactory.createResource(genModelLocation);
+				genModelResource.load(null);
+				EList<EObject> genModelContents = genModelResource.getContents();
+				if (genModelContents.size() == 1 && genModelContents.get(0) instanceof GenModel) {
+					GenModel genModel = (GenModel) genModelContents.get(0);
+					EList<GenPackage> genPackages = genModel.getGenPackages();
+					if (genPackages.size() == 1) {
+						GenPackage genPackage = genPackages.get(0);
+						String fileExtension = genPackage.getFileExtension();
+						Object resourceFactoryObject = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(fileExtension);
+						if (resourceFactoryObject == null) {
+							resourceFactoryObject = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get("*");
+						}
+						Resource.Factory resourceFactory = null;
+						if (resourceFactoryObject instanceof Resource.Factory.Descriptor) {
+							resourceFactory = ((Resource.Factory.Descriptor) resourceFactoryObject).createFactory();
+						} else {
+							resourceFactory = (Resource.Factory) resourceFactoryObject;
+						}
 
-					Class<?>[] interfaces = metaModelPackage.getClass().getInterfaces();
-					if (interfaces.length == 1 && interfaces[0].isInterface() && EPackage.class.isAssignableFrom(interfaces[0])) {
-						exportModel(exportPath, FrameworkUtil.getBundle(metaModelPackage.getClass()).getSymbolicName(), FrameworkUtil
-								.getBundle(resourceFactory.getClass()).getSymbolicName(), metaModelUri, fileExtension,
-								interfaces[0].getCanonicalName(), resourceFactory.getClass().getCanonicalName());
+						Class<?>[] interfaces = metaModelPackage.getClass().getInterfaces();
+						if (interfaces.length == 1 && interfaces[0].isInterface() && EPackage.class.isAssignableFrom(interfaces[0])) {
+							exportMetaModel(exportPath, FrameworkUtil.getBundle(metaModelPackage.getClass()).getSymbolicName(),
+									FrameworkUtil.getBundle(resourceFactory.getClass()).getSymbolicName(), metaModelUri, fileExtension,
+									interfaces[0].getCanonicalName(), resourceFactory.getClass().getCanonicalName());
+						}
 					}
 				}
 			}
@@ -107,12 +128,26 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 		}
 	}
 
-	protected void exportModel(String exportPath, String ePackageBundleName, String resourceFactoryBundleName, String metaModelUri,
+	/**
+	 * Export Meta Model.
+	 * 
+	 * @param exportPath
+	 * @param ePackageBundleName
+	 * @param resourceFactoryBundleName
+	 * @param metaModelUri
+	 * @param extension
+	 * @param ePackage
+	 * @param resourceFactory
+	 */
+	protected void exportMetaModel(String exportPath, String ePackageBundleName, String resourceFactoryBundleName, String metaModelUri,
 			String extension, String ePackage, String resourceFactory) {
 		File bundleNameFile = new File(exportPath + File.separator + ePackageBundleName);
 		bundleNameFile.mkdirs();
 		Set<File> bundleFiles = new HashSet<File>();
 		Set<String> bundleIdToAvoid = new HashSet<String>();
+		// Default Bundle not to follow up.
+		bundleIdToAvoid.add(ORG_ECLIPSE_CORE_RUNTIME_PLUGIN_ID);
+		bundleIdToAvoid.add(ORG_ECLIPSE_EMF_ECORE_PLUGIN_ID);
 		exportBundle(ePackageBundleName, bundleNameFile.getAbsolutePath(), bundleFiles, bundleIdToAvoid);
 		exportBundle(resourceFactoryBundleName, bundleNameFile.getAbsolutePath(), bundleFiles, bundleIdToAvoid);
 		for (File bundleFile : bundleFiles) {
@@ -136,6 +171,14 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 		}
 	}
 
+	/**
+	 * Export Bundle.
+	 * 
+	 * @param bundleSymbolicName
+	 * @param exportPath
+	 * @param bundleFiles
+	 * @param bundleToAvoid
+	 */
 	protected void exportBundle(String bundleSymbolicName, String exportPath, Set<File> bundleFiles, Set<String> bundleToAvoid) {
 		try {
 			if (!bundleToAvoid.contains(bundleSymbolicName)) {
@@ -153,6 +196,12 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 		}
 	}
 
+	/**
+	 * Copy File.
+	 * 
+	 * @param srsFile
+	 * @param destFile
+	 */
 	protected void copyFile(File srsFile, File destFile) {
 		try {
 			InputStream in = new FileInputStream(srsFile);
