@@ -17,35 +17,32 @@ import com.thalesgroup.openflexo.emf.model.city1.HouseType;
 import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class City1FactoryImpl extends EFactoryImpl implements City1Factory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static City1Factory init() {
 		try {
-			City1Factory theCity1Factory = (City1Factory)EPackage.Registry.INSTANCE.getEFactory("http://www.thalesgroup.com/openflexo/emf/model/city1"); 
+			City1Factory theCity1Factory = (City1Factory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.thalesgroup.com/openflexo/emf/model/city1");
 			if (theCity1Factory != null) {
 				return theCity1Factory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new City1FactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public City1FactoryImpl() {
@@ -53,54 +50,57 @@ public class City1FactoryImpl extends EFactoryImpl implements City1Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case City1Package.CITY: return createCity();
-			case City1Package.HOUSE: return createHouse();
-			case City1Package.RESIDENT: return createResident();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case City1Package.CITY:
+			return createCity();
+		case City1Package.HOUSE:
+			return createHouse();
+		case City1Package.RESIDENT:
+			return createResident();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case City1Package.HOUSE_TYPE:
-				return createHouseTypeFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case City1Package.HOUSE_TYPE:
+			return createHouseTypeFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case City1Package.HOUSE_TYPE:
-				return convertHouseTypeToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case City1Package.HOUSE_TYPE:
+			return convertHouseTypeToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public City createCity() {
@@ -109,8 +109,8 @@ public class City1FactoryImpl extends EFactoryImpl implements City1Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public House createHouse() {
@@ -119,8 +119,8 @@ public class City1FactoryImpl extends EFactoryImpl implements City1Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resident createResident() {
@@ -129,19 +129,21 @@ public class City1FactoryImpl extends EFactoryImpl implements City1Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HouseType createHouseTypeFromString(EDataType eDataType, String initialValue) {
 		HouseType result = HouseType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertHouseTypeToString(EDataType eDataType, Object instanceValue) {
@@ -149,17 +151,17 @@ public class City1FactoryImpl extends EFactoryImpl implements City1Factory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public City1Package getCity1Package() {
-		return (City1Package)getEPackage();
+		return (City1Package) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -168,4 +170,4 @@ public class City1FactoryImpl extends EFactoryImpl implements City1Factory {
 		return City1Package.eINSTANCE;
 	}
 
-} //City1FactoryImpl
+} // City1FactoryImpl

@@ -2,32 +2,29 @@
  */
 package com.thalesgroup.openflexo.emf.model.city2.tests;
 
+import junit.framework.TestCase;
+import junit.textui.TestRunner;
+
 import com.thalesgroup.openflexo.emf.model.city2.City2Factory;
 import com.thalesgroup.openflexo.emf.model.city2.Mayor;
 
-import junit.framework.TestCase;
-
-import junit.textui.TestRunner;
-
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Mayor</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object '<em><b>Mayor</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MayorTest extends TestCase {
 
 	/**
-	 * The fixture for this Mayor test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The fixture for this Mayor test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Mayor fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static void main(String[] args) {
@@ -35,9 +32,8 @@ public class MayorTest extends TestCase {
 	}
 
 	/**
-	 * Constructs a new Mayor test case with the given name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Constructs a new Mayor test case with the given name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MayorTest(String name) {
@@ -45,9 +41,8 @@ public class MayorTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Mayor test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Sets the fixture for this Mayor test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void setFixture(Mayor fixture) {
@@ -55,9 +50,8 @@ public class MayorTest extends TestCase {
 	}
 
 	/**
-	 * Returns the fixture for this Mayor test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the fixture for this Mayor test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Mayor getFixture() {
@@ -65,8 +59,8 @@ public class MayorTest extends TestCase {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
@@ -76,8 +70,8 @@ public class MayorTest extends TestCase {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
@@ -86,4 +80,4 @@ public class MayorTest extends TestCase {
 		setFixture(null);
 	}
 
-} //MayorTest
+} // MayorTest

@@ -9,24 +9,22 @@ import com.thalesgroup.openflexo.emf.model.city1.City;
 import com.thalesgroup.openflexo.emf.model.city1.City1Factory;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>City</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object '<em><b>City</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class CityTest extends TestCase {
 
 	/**
-	 * The fixture for this City test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The fixture for this City test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected City fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static void main(String[] args) {
@@ -34,9 +32,8 @@ public class CityTest extends TestCase {
 	}
 
 	/**
-	 * Constructs a new City test case with the given name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Constructs a new City test case with the given name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CityTest(String name) {
@@ -44,9 +41,8 @@ public class CityTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this City test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Sets the fixture for this City test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void setFixture(City fixture) {
@@ -54,9 +50,8 @@ public class CityTest extends TestCase {
 	}
 
 	/**
-	 * Returns the fixture for this City test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the fixture for this City test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected City getFixture() {
@@ -64,8 +59,8 @@ public class CityTest extends TestCase {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
@@ -75,8 +70,8 @@ public class CityTest extends TestCase {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
@@ -85,4 +80,4 @@ public class CityTest extends TestCase {
 		setFixture(null);
 	}
 
-} //CityTest
+} // CityTest

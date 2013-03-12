@@ -3,11 +3,12 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="city1" nsURI="http://www.thalesgroup.com/openflexo/emf/model/city1"
     nsPrefix="city1">
   <eClassifiers xsi:type="ecore:EClass" name="City">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zipcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="houses" upperBound="-1"
         eType="#//House" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="residents" upperBound="-1"
         eType="#//Resident" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="House">
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Resident"/>

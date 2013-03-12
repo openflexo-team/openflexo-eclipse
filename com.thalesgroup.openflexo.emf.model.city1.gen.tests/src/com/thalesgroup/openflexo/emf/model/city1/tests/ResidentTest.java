@@ -9,24 +9,22 @@ import com.thalesgroup.openflexo.emf.model.city1.City1Factory;
 import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Resident</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object '<em><b>Resident</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ResidentTest extends TestCase {
 
 	/**
-	 * The fixture for this Resident test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The fixture for this Resident test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Resident fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static void main(String[] args) {
@@ -34,9 +32,8 @@ public class ResidentTest extends TestCase {
 	}
 
 	/**
-	 * Constructs a new Resident test case with the given name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Constructs a new Resident test case with the given name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ResidentTest(String name) {
@@ -44,9 +41,8 @@ public class ResidentTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Resident test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Sets the fixture for this Resident test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void setFixture(Resident fixture) {
@@ -54,9 +50,8 @@ public class ResidentTest extends TestCase {
 	}
 
 	/**
-	 * Returns the fixture for this Resident test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the fixture for this Resident test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Resident getFixture() {
@@ -64,8 +59,8 @@ public class ResidentTest extends TestCase {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
@@ -75,8 +70,8 @@ public class ResidentTest extends TestCase {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
@@ -85,4 +80,4 @@ public class ResidentTest extends TestCase {
 		setFixture(null);
 	}
 
-} //ResidentTest
+} // ResidentTest

@@ -7,16 +7,15 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 /**
- * <!-- begin-user-doc -->
- * A test suite for the '<em><b>city1</b></em>' package.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test suite for the '<em><b>city1</b></em>' package. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class City1Tests extends TestSuite {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static void main(String[] args) {
@@ -24,8 +23,8 @@ public class City1Tests extends TestSuite {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Test suite() {
@@ -34,12 +33,12 @@ public class City1Tests extends TestSuite {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public City1Tests(String name) {
 		super(name);
 	}
 
-} //City1Tests
+} // City1Tests
