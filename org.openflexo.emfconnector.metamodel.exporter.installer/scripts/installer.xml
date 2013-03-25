@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Installer" default="installer">
-	<property name="work.dir" value="../work"/>
-	
+	<property name="work.dir" value="${basedir}/../work"/>
+
 	<property file="installer.properties" />
 	
 	<!-- Deploy environment -->
@@ -15,22 +15,20 @@
 	</target>
 
 	<!-- Director -->
-	<property name="director.zip" value="../resources/director_latest.zip"/>
 	<property name="director.dir" value="${work.dir}/director"/>
 	<property name="director.equinox.launcher.jar" value="${director.dir}/plugins/org.eclipse.equinox.launcher_1.3.0.v20120522-1813.jar"/>
-	<target name="director.deploy">
+	<target name="prepare.tool.director">
 		<antcall target="deploy">
-			<param name="deploy.name" value="director.deploy" />
-			<param name="deploy.target" value="do.prepare.deploy.director" />
+			<param name="deploy.name" value="director.tool" />
+			<param name="deploy.target" value="do.prepare.tool.director" />
 			<param name="deploy.dir" value="${director.dir}" />
 		</antcall>
 	</target>
-	<target name="do.prepare.deploy.director">
+	<target name="do.prepare.tool.director">
 		<unzip src="${director.zip}" dest="${director.dir}/.."/>
 	</target>
 	
 	<!-- EMFConnector MetaModel Exporter -->
-	<property name="emfconnector.metamodel.exporter.updatesite.zip" value="../resources/org.openflexo.emfconnector.metamodel.exporter.zip"/>
 	<property name="emfconnector.metamodel.exporter.updatesite.dir" value="${work.dir}/org.openflexo.emfconnector.metamodel.exporter.updatesite"/>
 	<target name="prepare.updatesite.emfconnector.metamodel.exporter">
 		<antcall target="deploy">
@@ -48,7 +46,7 @@
 	<property name="install.workspace.dir" value="${work.dir}/workspace"/>
 	<property name="install.repositories.url.list" value="${emfconnector.metamodel.exporter.updatesite.url}"/>
 	<property name="install.iu.name.list" value="org.openflexo.emfconnector.metamodel.exporter.feature.group"/>
-    <target name="installer" depends="director.deploy">
+    <target name="installer" depends="prepare.tool.director, prepare.updatesite.emfconnector.metamodel.exporter">
     	<mkdir dir="${install.workspace.dir}"/>
 		<java fork="true" jar="${director.equinox.launcher.jar}" dir="${director.dir}" failonerror="true">
 			<jvmarg value="-Xmx1024m"/>
