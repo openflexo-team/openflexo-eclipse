@@ -2,33 +2,28 @@
  */
 package com.thalesgroup.openflexo.emf.model.city2.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import com.thalesgroup.openflexo.emf.model.city2.Appartment;
 import com.thalesgroup.openflexo.emf.model.city2.City2Package;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Appartment</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Appartment</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.thalesgroup.openflexo.emf.model.city2.impl.AppartmentImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city2.impl.AppartmentImpl#getLabel <em>Label</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AppartmentImpl extends HouseImpl implements Appartment {
 	/**
-	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLabel()
 	 * @generated
 	 * @ordered
@@ -36,9 +31,8 @@ public class AppartmentImpl extends HouseImpl implements Appartment {
 	protected static final String LABEL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLabel()
 	 * @generated
 	 * @ordered
@@ -46,8 +40,8 @@ public class AppartmentImpl extends HouseImpl implements Appartment {
 	protected String label = LABEL_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AppartmentImpl() {
@@ -55,8 +49,8 @@ public class AppartmentImpl extends HouseImpl implements Appartment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -65,8 +59,8 @@ public class AppartmentImpl extends HouseImpl implements Appartment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLabel() {
@@ -74,8 +68,8 @@ public class AppartmentImpl extends HouseImpl implements Appartment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setLabel(String newLabel) {
@@ -86,71 +80,72 @@ public class AppartmentImpl extends HouseImpl implements Appartment {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case City2Package.APPARTMENT__LABEL:
-				return getLabel();
+		case City2Package.APPARTMENT__LABEL:
+			return getLabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case City2Package.APPARTMENT__LABEL:
-				setLabel((String)newValue);
-				return;
+		case City2Package.APPARTMENT__LABEL:
+			setLabel((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case City2Package.APPARTMENT__LABEL:
-				setLabel(LABEL_EDEFAULT);
-				return;
+		case City2Package.APPARTMENT__LABEL:
+			setLabel(LABEL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case City2Package.APPARTMENT__LABEL:
-				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+		case City2Package.APPARTMENT__LABEL:
+			return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (label: ");
@@ -159,4 +154,4 @@ public class AppartmentImpl extends HouseImpl implements Appartment {
 		return result.toString();
 	}
 
-} //AppartmentImpl
+} // AppartmentImpl

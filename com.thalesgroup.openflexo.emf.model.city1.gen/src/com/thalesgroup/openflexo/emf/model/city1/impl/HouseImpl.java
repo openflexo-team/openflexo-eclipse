@@ -14,25 +14,22 @@ import com.thalesgroup.openflexo.emf.model.city1.HouseType;
 import com.thalesgroup.openflexo.emf.model.city1.Resident;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>House</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>House</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl#getType <em>Type</em>}</li>
- *   <li>{@link com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl#getInfo <em>Info</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl#getOwner <em>Owner</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl#getType <em>Type</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city1.impl.HouseImpl#getInfo <em>Info</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class HouseImpl extends EObjectImpl implements House {
 	/**
-	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOwner()
 	 * @generated
 	 * @ordered
@@ -40,9 +37,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	protected Resident owner;
 
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -50,9 +46,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	protected static final HouseType TYPE_EDEFAULT = HouseType.MANSION;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -60,9 +55,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	protected HouseType type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getInfo() <em>Info</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getInfo() <em>Info</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInfo()
 	 * @generated
 	 * @ordered
@@ -70,9 +64,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	protected static final String INFO_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getInfo() <em>Info</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInfo() <em>Info</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInfo()
 	 * @generated
 	 * @ordered
@@ -80,8 +73,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	protected String info = INFO_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected HouseImpl() {
@@ -89,8 +82,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,14 +92,14 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resident getOwner() {
 		if (owner != null && owner.eIsProxy()) {
-			InternalEObject oldOwner = (InternalEObject)owner;
-			owner = (Resident)eResolveProxy(oldOwner);
+			InternalEObject oldOwner = (InternalEObject) owner;
+			owner = (Resident) eResolveProxy(oldOwner);
 			if (owner != oldOwner) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, City1Package.HOUSE__OWNER, oldOwner, owner));
@@ -116,8 +109,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resident basicGetOwner() {
@@ -125,8 +118,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOwner(Resident newOwner) {
@@ -137,8 +130,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public HouseType getType() {
@@ -146,8 +139,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setType(HouseType newType) {
@@ -158,8 +151,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getInfo() {
@@ -167,8 +160,8 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInfo(String newInfo) {
@@ -179,92 +172,94 @@ public class HouseImpl extends EObjectImpl implements House {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case City1Package.HOUSE__OWNER:
-				if (resolve) return getOwner();
-				return basicGetOwner();
-			case City1Package.HOUSE__TYPE:
-				return getType();
-			case City1Package.HOUSE__INFO:
-				return getInfo();
+		case City1Package.HOUSE__OWNER:
+			if (resolve)
+				return getOwner();
+			return basicGetOwner();
+		case City1Package.HOUSE__TYPE:
+			return getType();
+		case City1Package.HOUSE__INFO:
+			return getInfo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case City1Package.HOUSE__OWNER:
-				setOwner((Resident)newValue);
-				return;
-			case City1Package.HOUSE__TYPE:
-				setType((HouseType)newValue);
-				return;
-			case City1Package.HOUSE__INFO:
-				setInfo((String)newValue);
-				return;
+		case City1Package.HOUSE__OWNER:
+			setOwner((Resident) newValue);
+			return;
+		case City1Package.HOUSE__TYPE:
+			setType((HouseType) newValue);
+			return;
+		case City1Package.HOUSE__INFO:
+			setInfo((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case City1Package.HOUSE__OWNER:
-				setOwner((Resident)null);
-				return;
-			case City1Package.HOUSE__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case City1Package.HOUSE__INFO:
-				setInfo(INFO_EDEFAULT);
-				return;
+		case City1Package.HOUSE__OWNER:
+			setOwner((Resident) null);
+			return;
+		case City1Package.HOUSE__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
+		case City1Package.HOUSE__INFO:
+			setInfo(INFO_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case City1Package.HOUSE__OWNER:
-				return owner != null;
-			case City1Package.HOUSE__TYPE:
-				return type != TYPE_EDEFAULT;
-			case City1Package.HOUSE__INFO:
-				return INFO_EDEFAULT == null ? info != null : !INFO_EDEFAULT.equals(info);
+		case City1Package.HOUSE__OWNER:
+			return owner != null;
+		case City1Package.HOUSE__TYPE:
+			return type != TYPE_EDEFAULT;
+		case City1Package.HOUSE__INFO:
+			return INFO_EDEFAULT == null ? info != null : !INFO_EDEFAULT.equals(info);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (type: ");
@@ -275,4 +270,4 @@ public class HouseImpl extends EObjectImpl implements House {
 		return result.toString();
 	}
 
-} //HouseImpl
+} // HouseImpl

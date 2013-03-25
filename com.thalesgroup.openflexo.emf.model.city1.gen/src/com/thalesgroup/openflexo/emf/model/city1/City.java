@@ -6,33 +6,31 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>City</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>City</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.thalesgroup.openflexo.emf.model.city1.City#getHouses <em>Houses</em>}</li>
- *   <li>{@link com.thalesgroup.openflexo.emf.model.city1.City#getResidents <em>Residents</em>}</li>
- *   <li>{@link com.thalesgroup.openflexo.emf.model.city1.City#getName <em>Name</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city1.City#getName <em>Name</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city1.City#getZipcode <em>Zipcode</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city1.City#getHouses <em>Houses</em>}</li>
+ * <li>{@link com.thalesgroup.openflexo.emf.model.city1.City#getResidents <em>Residents</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity()
  * @model
  * @generated
  */
 public interface City extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Houses</b></em>' containment reference list.
-	 * The list contents are of type {@link com.thalesgroup.openflexo.emf.model.city1.House}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Houses</b></em>' containment reference list. The list contents are of type
+	 * {@link com.thalesgroup.openflexo.emf.model.city1.House}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Houses</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Houses</em>' containment reference list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Houses</em>' containment reference list.
 	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity_Houses()
 	 * @model containment="true"
@@ -41,14 +39,14 @@ public interface City extends EObject {
 	EList<House> getHouses();
 
 	/**
-	 * Returns the value of the '<em><b>Residents</b></em>' containment reference list.
-	 * The list contents are of type {@link com.thalesgroup.openflexo.emf.model.city1.Resident}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Residents</b></em>' containment reference list. The list contents are of type
+	 * {@link com.thalesgroup.openflexo.emf.model.city1.Resident}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Residents</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Residents</em>' containment reference list isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Residents</em>' containment reference list.
 	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity_Residents()
 	 * @model containment="true"
@@ -57,13 +55,12 @@ public interface City extends EObject {
 	EList<Resident> getResidents();
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity_Name()
@@ -73,13 +70,40 @@ public interface City extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.thalesgroup.openflexo.emf.model.city1.City#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link com.thalesgroup.openflexo.emf.model.city1.City#getName <em>Name</em>}' attribute. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Zipcode</b></em>' attribute. <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Zipcode</em>' attribute isn't clear, there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the value of the '<em>Zipcode</em>' attribute.
+	 * @see #setZipcode(Integer)
+	 * @see com.thalesgroup.openflexo.emf.model.city1.City1Package#getCity_Zipcode()
+	 * @model
+	 * @generated
+	 */
+	Integer getZipcode();
+
+	/**
+	 * Sets the value of the '{@link com.thalesgroup.openflexo.emf.model.city1.City#getZipcode <em>Zipcode</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Zipcode</em>' attribute.
+	 * @see #getZipcode()
+	 * @generated
+	 */
+	void setZipcode(Integer value);
 
 } // City

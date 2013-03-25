@@ -2,58 +2,49 @@
  */
 package com.thalesgroup.openflexo.emf.model.city2.tests;
 
-import com.thalesgroup.openflexo.emf.model.city2.City;
-import com.thalesgroup.openflexo.emf.model.city2.City2Factory;
-import com.thalesgroup.openflexo.emf.model.city2.City2Package;
-
 import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
 import org.eclipse.emf.ecore.util.Diagnostician;
-
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import com.thalesgroup.openflexo.emf.model.city2.City;
+import com.thalesgroup.openflexo.emf.model.city2.City2Factory;
+import com.thalesgroup.openflexo.emf.model.city2.City2Package;
+
 /**
- * <!-- begin-user-doc -->
- * A sample utility for the '<em><b>city2</b></em>' package.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A sample utility for the '<em><b>city2</b></em>' package. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class City2Example {
 	/**
-	 * <!-- begin-user-doc -->
-	 * Load all the argument file paths or URIs as instances of the model.
-	 * <!-- end-user-doc -->
-	 * @param args the file paths or URIs.
+	 * <!-- begin-user-doc --> Load all the argument file paths or URIs as instances of the model. <!-- end-user-doc -->
+	 * 
+	 * @param args
+	 *            the file paths or URIs.
 	 * @generated
 	 */
 	public static void main(String[] args) {
 		// Create a resource set to hold the resources.
 		//
 		ResourceSet resourceSet = new ResourceSetImpl();
-		
+
 		// Register the appropriate resource factory to handle all file extensions.
 		//
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
-			(Resource.Factory.Registry.DEFAULT_EXTENSION, 
-			 new XMIResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
 		// Register the package to ensure it is available during loading.
 		//
-		resourceSet.getPackageRegistry().put
-			(City2Package.eNS_URI, 
-			 City2Package.eINSTANCE);
-        
+		resourceSet.getPackageRegistry().put(City2Package.eNS_URI, City2Package.eINSTANCE);
+
 		// If there are no arguments, emit an appropriate usage message.
 		//
 		if (args.length == 0) {
@@ -63,12 +54,10 @@ public class City2Example {
 				City root = City2Factory.eINSTANCE.createCity();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
-			}
-			catch (IOException exception) {
+			} catch (IOException exception) {
 				exception.printStackTrace();
 			}
-		}
-		else {
+		} else {
 			// Iterate over all the arguments.
 			//
 			for (int i = 0; i < args.length; ++i) {
@@ -77,7 +66,7 @@ public class City2Example {
 				// Otherwise, it's directly treated as a URL.
 				//
 				File file = new File(args[i]);
-				URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI(args[i]);
+				URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()) : URI.createURI(args[i]);
 
 				try {
 					// Demand load resource for this file.
@@ -93,21 +82,21 @@ public class City2Example {
 							printDiagnostic(diagnostic, "");
 						}
 					}
-				}
-				catch (RuntimeException exception) {
+				} catch (RuntimeException exception) {
 					System.out.println("Problem loading " + uri);
 					exception.printStackTrace();
 				}
 			}
 		}
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * Prints diagnostics with indentation.
-	 * <!-- end-user-doc -->
-	 * @param diagnostic the diagnostic to print.
-	 * @param indent the indentation for printing.
+	 * <!-- begin-user-doc --> Prints diagnostics with indentation. <!-- end-user-doc -->
+	 * 
+	 * @param diagnostic
+	 *            the diagnostic to print.
+	 * @param indent
+	 *            the indentation for printing.
 	 * @generated
 	 */
 	protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
@@ -118,4 +107,4 @@ public class City2Example {
 		}
 	}
 
-} //City2Example
+} // City2Example

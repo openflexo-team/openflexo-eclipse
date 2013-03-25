@@ -2,22 +2,21 @@
  */
 package com.thalesgroup.openflexo.emf.model.city2.tests;
 
+import junit.textui.TestRunner;
+
 import com.thalesgroup.openflexo.emf.model.city2.Appartment;
 import com.thalesgroup.openflexo.emf.model.city2.City2Factory;
 
-import junit.textui.TestRunner;
-
 /**
- * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Appartment</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A test case for the model object '<em><b>Appartment</b></em>'. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class AppartmentTest extends HouseTest {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static void main(String[] args) {
@@ -25,9 +24,8 @@ public class AppartmentTest extends HouseTest {
 	}
 
 	/**
-	 * Constructs a new Appartment test case with the given name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Constructs a new Appartment test case with the given name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AppartmentTest(String name) {
@@ -35,19 +33,18 @@ public class AppartmentTest extends HouseTest {
 	}
 
 	/**
-	 * Returns the fixture for this Appartment test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the fixture for this Appartment test case. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected Appartment getFixture() {
-		return (Appartment)fixture;
+		return (Appartment) fixture;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
@@ -57,8 +54,8 @@ public class AppartmentTest extends HouseTest {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
@@ -67,4 +64,4 @@ public class AppartmentTest extends HouseTest {
 		setFixture(null);
 	}
 
-} //AppartmentTest
+} // AppartmentTest
