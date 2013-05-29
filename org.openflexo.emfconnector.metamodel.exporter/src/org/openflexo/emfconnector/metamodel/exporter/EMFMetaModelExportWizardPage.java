@@ -1,14 +1,11 @@
-/**
- * 
- */
 package org.openflexo.emfconnector.metamodel.exporter;
 
-import java.util.Set;
+import java.util.Collection;
 
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
@@ -36,8 +33,7 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 
 	protected final Preferences preferences;
 	protected String exportPath = null;
-	protected String uri = null;
-	protected EPackage ePackage = null;
+	protected EMFMetaModel emfMetaModel = null;
 
 	protected EMFMetaModelExportWizardPage(Preferences preferences) {
 		super("EMF Meta Model");
@@ -60,7 +56,8 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout gridLayout3 = new GridLayout(3, false);
 		container.setLayout(gridLayout3);
-		GridData containerGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		GridData containerGridData = new GridData(SWT.FILL, SWT.FILL, true,
+				true);
 		container.setLayoutData(containerGridData);
 
 		// Export folder
@@ -89,9 +86,11 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				DirectoryDialog dialog = new DirectoryDialog(parent.getShell(), SWT.SINGLE);
+				DirectoryDialog dialog = new DirectoryDialog(parent.getShell(),
+						SWT.SINGLE);
 				// Default value preference.
-				String preferenceValue = preferences.get(exportPathPreference, "");
+				String preferenceValue = preferences.get(exportPathPreference,
+						"");
 				dialog.setFilterPath(preferenceValue);
 				String path = dialog.open();
 				if (path != null) {
@@ -104,54 +103,53 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 		});
 
 		// MetaModel List
-		ListViewer packageUriListViewer = new ListViewer(container, SWT.SINGLE | SWT.V_SCROLL);
-		GridData packageUriListGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		ListViewer packageUriListViewer = new ListViewer(container, SWT.SINGLE
+				| SWT.V_SCROLL);
+		GridData packageUriListGridData = new GridData(SWT.FILL, SWT.FILL,
+				true, true);
 		packageUriListGridData.horizontalSpan = 3;
 		packageUriListViewer.getList().setLayoutData(packageUriListGridData);
-		packageUriListViewer.setContentProvider(new IStructuredContentProvider() {
+		packageUriListViewer
+				.setContentProvider(new IStructuredContentProvider() {
 
-			@Override
-			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-			}
+					@Override
+					public void inputChanged(Viewer viewer, Object oldInput,
+							Object newInput) {
+					}
 
-			@Override
-			public void dispose() {
-			}
+					@Override
+					public void dispose() {
+					}
 
-			@Override
-			public Object[] getElements(Object inputElement) {
-				return ((Set<String>) inputElement).toArray();
-			}
-		});
+					@Override
+					public Object[] getElements(Object inputElement) {
+						return ((Collection<EMFMetaModel>) inputElement)
+								.toArray();
+					}
+				});
 		packageUriListViewer.setSorter(new ViewerSorter());
-		packageUriListViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+		packageUriListViewer.setLabelProvider(new LabelProvider() {
 			@Override
-			public void selectionChanged(SelectionChangedEvent event) {
-				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-				if (selection.toList().size() > 0) {
-					String objectSelected = (String) selection.getFirstElement();
-					uri = objectSelected;
-					EPackage thePackage = null;
-					Object packageFromUri = EPackage.Registry.INSTANCE.get(uri);
-					if (packageFromUri instanceof EPackage.Descriptor) {
-						thePackage = ((EPackage.Descriptor) packageFromUri).getEPackage();
-					} else {
-						thePackage = (EPackage) packageFromUri;
-					}
-					if (thePackage != null) {
-						ePackage = thePackage;
-					} else {
-						uri = null;
-						ePackage = null;
-					}
-				} else {
-					uri = null;
-					ePackage = null;
-				}
-				setPageComplete(checkPageComplete());
+			public String getText(Object element) {
+				return ((EMFMetaModel) element).ePackageUri;
 			}
 		});
-		packageUriListViewer.setInput(EPackage.Registry.INSTANCE.keySet());
+		packageUriListViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					@Override
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
+						if (selection.toList().size() > 0) {
+							emfMetaModel = (EMFMetaModel) selection
+									.getFirstElement();
+						} else {
+							emfMetaModel = null;
+						}
+						setPageComplete(checkPageComplete());
+					}
+				});
+		packageUriListViewer.setInput(EMFMetaModelUtility.getEMFMetaModels());
 
 		// Required to avoid an error in the system
 		setControl(parent);
@@ -159,15 +157,11 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 	}
 
 	protected boolean checkPageComplete() {
-		return getMetaModelUri() != null && getMetaModelEPackage() != null && getExportPath() != null;
+		return getEMFMetaModel() != null && getExportPath() != null;
 	}
 
-	public String getMetaModelUri() {
-		return uri;
-	}
-
-	public EPackage getMetaModelEPackage() {
-		return ePackage;
+	public EMFMetaModel getEMFMetaModel() {
+		return emfMetaModel;
 	}
 
 	public String getExportPath() {
