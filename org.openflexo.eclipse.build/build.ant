@@ -22,7 +22,7 @@
 	<target name="build.exporter">
 		<build.feature.updatesite
 			work.dir="${work.dir}"
-			build.feature.id="org.openflexo.emfconnector.metamodel.exporter.feature"
+			build.feature.id="org.openflexo.emfconnector.metamodel.exporter.updatesite.feature"
 			get.source.target="get_sources"
 		/>
 	</target>

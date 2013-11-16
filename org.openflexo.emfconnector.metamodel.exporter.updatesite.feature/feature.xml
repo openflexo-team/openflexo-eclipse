@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.openflexo.emfconnector.metamodel.exporter.updatesite.feature"
+      label="OpenFlexo EMF Connector Metamodel Exporter UpdateSite Feature"
+      version="1.0.0.qualifier">
+
+   <includes
+         id="org.openflexo.emfconnector.metamodel.exporter.application.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.openflexo.emfconnector.metamodel.exporter.feature"
+         version="0.0.0"/>
+
+</feature>

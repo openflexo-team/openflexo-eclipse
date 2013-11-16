@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.openflexo.emfconnector.metamodel.exporter.application.feature"
+      label="OpenFlexo EMF Connector Metamodel Exporter Application Feature"
+      version="1.0.0.qualifier">
+
+</feature>

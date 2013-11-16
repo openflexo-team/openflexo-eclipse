@@ -7,10 +7,12 @@
 	<import file="../eclipse-ant/p2.ant"/>
 	
 	<target name="installer">
-        <unzip src="${emfconnector.metamodel.exporter.zip}" dest="${work.dir}/org.openflexo.emfconnector.metamodel.exporter.feature"/>
+		<delete dir="${work.dir}"/>
+        <unzip src="${emfconnector.metamodel.exporter.zip}" dest="${work.dir}"/>
 		<run.eclipse.install.pluginOrFeature
-			repositories.url.list="file://${work.dir}/org.openflexo.emfconnector.metamodel.exporter.feature"
-			pluginorfeatures.name.list="org.openflexo.emfconnector.metamodel.exporter.feature.group"
-			eclipse.destination.dir="${eclipse.destination.dir}"/>
+			eclipse.destination.dir="${eclipse.destination.dir}"
+			repositories.url.list="file://${work.dir}"
+			pluginOrFeatures.name.list="org.openflexo.emfconnector.metamodel.exporter.updatesite.feature.feature.group" />
+		<delete dir="${work.dir}"/>
     </target>
 </project>
