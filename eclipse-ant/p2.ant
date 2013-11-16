@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- see http://wiki.eclipse.org/Equinox/p2/Ant_Tasks -->
+<project name="P2">
+	<import file="common.ant"/>
+
+	<!-- Director -->
+	<target name="deploy.director">
+		<available file="${destination}/director" property="director.exist"/>
+		<antcall target="do.deploy.director"/>
+		<property name="director.dir" value="${destination}/director"/>
+		<makeurl file="${director.dir}" property="director.url"/>
+	</target>
+
+	<target name="do.deploy.director" unless="director.exist">
+		<download.file file.url="http://download.eclipse.org/tools/buckminster/products/director_latest-3.7.zip" destination="${destination}"/>
+		<unzip src="${destination}/director_latest-3.7.zip" dest="${destination}"/>
+		<delete file="${destination}/director_latest-3.7.zip"/>
+	</target>
+	
+	<macrodef name="run.eclipse.application">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="workspace.dir" default="${java.io.tmpdir}/workspace"/>
+		<attribute name="application"/>
+		<element name="jvmargs0" optional="true" />
+		<element name="args0" optional="true" />
+		<sequential>
+			<echo>Run application @{application} in workspace @{workspace.dir}</echo>
+			<first id="launcher_jar">
+			    <fileset dir="@{eclipse.dir}" includes="**/org.eclipse.equinox.launcher_*.jar" />
+			</first>
+			<java fork="true" jar="${toString:launcher_jar}" dir="@{eclipse.dir}" failonerror="true">
+				<jvmargs0/>
+				<arg value="-data"/>
+				<arg value="@{workspace.dir}"/>
+				<arg value="-application"/>
+				<arg value="@{application}"/>
+				<args0/>
+			</java>
+			<delete dir="@{workspace.dir}"/>		
+		</sequential>
+	</macrodef>
+	
+    <macrodef name="run.eclipse.ant">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+        <attribute name="ant.file"/>
+		<element name="jvmargs1" optional="true" />
+		<element name="args1" optional="true" />
+        <sequential>
+			<echo>Run ant file @{ant.file}</echo>
+        	<run.eclipse.application eclipse.dir="@{eclipse.dir}" application="org.eclipse.ant.core.antRunner">
+				<jvmargs0>
+	        		<jvmargs1/>
+				</jvmargs0>
+        		<args0>        		
+        			<arg value="-buildfile"/>
+        			<arg value="@{ant.file}"/>
+            		<args1/>
+				</args0>
+        	</run.eclipse.application>
+        </sequential>
+    </macrodef>
+
+	<!-- http://wiki.eclipse.org/Equinox_p2_Repository_Mirroring -->
+    <macrodef name="run.eclipse.mirror">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="mirror.name" />
+		<attribute name="mirror.target.dir" default="${basedir}" />
+		<attribute name="updatesite.url" />
+		<attribute name="updatesite.filename" />
+		<element name="jvmargs1" optional="true" />
+		<element name="args1" optional="true" />
+        <sequential>
+			<echo>Mirror @{mirror.name} from @{updatesite.url} to @{mirror.target.dir}/@{updatesite.filename}</echo>
+        	<run.eclipse.application eclipse.dir="@{eclipse.dir}" application="org.eclipse.equinox.p2.artifact.repository.mirrorApplication">
+        		<jvmargs0>
+        			<jvmargs1/>
+        		</jvmargs0>
+        		<args0>
+        			<arg value="-source"/>
+        			<arg value="@{updatesite.url}"/>
+    				<arg value="-destination"/>
+    				<arg value="file://@{mirror.target.dir}/@{updatesite.filename}"/>
+            		<args1/>
+				</args0>
+        	</run.eclipse.application>
+        	<run.eclipse.application eclipse.dir="@{eclipse.dir}" application="org.eclipse.equinox.p2.metadata.repository.mirrorApplication">
+        		<jvmargs0>
+        			<jvmargs1/>
+        		</jvmargs0>
+        		<args0>
+        			<arg value="-source"/>
+        			<arg value="@{updatesite.url}"/>
+    				<arg value="-destination"/>
+    				<arg value="file://@{mirror.target.dir}/@{updatesite.filename}"/>
+            		<args1/>
+				</args0>
+        	</run.eclipse.application>
+			<touch file="@{mirror.target.dir}/@{updatesite.filename}/index.html" />
+			<touch file="@{mirror.target.dir}/@{updatesite.filename}/${timestamp}" />
+			<echo>Zip updateSite @{mirror.name} to @{mirror.target.dir}/updatesite-@{updatesite.filename}-${timestamp}.zip</echo>
+			<zip destfile="@{mirror.target.dir}/updatesite-@{updatesite.filename}-${timestamp}.zip" basedir="@{mirror.target.dir}/@{updatesite.filename}" />			
+			<delete dir="@{mirror.target.dir}/@{updatesite.filename}"/>
+        </sequential>
+    </macrodef>
+
+	<!-- Install Install Unit in an eclipse based application. -->
+	<!-- Repositories must be defined by their url -->
+	<!-- Repositories must be com-separated when defining a list of Repositories to use. -->
+	<!-- Install Unit can be plugin or feature. They are identified by their name for a plugin and by their name postfixed by 'feature.group' for a feature. -->
+	<!-- Install Unit must be coma-separated when defining a list of Install Unit to install.-->
+	<macrodef name="run.eclipse.install.pluginOrFeature">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="eclipse.destination.dir" />
+		<attribute name="repositories.url.list" />
+		<attribute name="pluginOrFeatures.name.list" />
+		<element name="jvmargs1" optional="true" />
+		<element name="args1" optional="true" />
+		<sequential>
+			<echo>Install @{pluginOrFeatures.name.list} from @{repositories.url.list} in @{eclipse.destination.dir}</echo>
+			<run.eclipse.application eclipse.dir="@{eclipse.dir}" application="org.eclipse.equinox.p2.director">
+				<jvmargs0>
+					<jvmarg value="-Declipse.p2.mirrors=false"/>
+					<jvmargs1/>
+				</jvmargs0>
+				<args0>
+					<arg value="-destination" />
+					<arg value="@{eclipse.destination.dir}" />
+					<arg value="-repository" />
+					<arg value="@{repositories.url.list}" />
+					<arg value="-profileProperties"/>
+					<arg value="org.eclipse.update.install.features=true"/>
+					<arg value="-installIU" />
+					<arg value="@{pluginOrFeatures.name.list}" />
+					<args1/>
+				</args0>
+			</run.eclipse.application>
+		</sequential>
+	</macrodef>
+
+    <macrodef name="run.eclipse.packaging">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+    	<attribute name="eclipse.src.zip"/>
+    	<attribute name="eclipse.dest.zip"/>
+		<attribute name="repositories.url.list"/>
+		<attribute name="pluginOrFeatures.name.list"/>
+		<element name="jvmargs2" optional="true" />
+		<element name="args2" optional="true" />
+        <sequential>
+        	<echo>Packaging eclipse from @{eclipse.src.zip}</echo>
+        	<unzip src="@{eclipse.src.zip}" dest="${java.io.tmpdir}"/>
+            <run.eclipse.install.pluginOrFeature eclipse.dir="@{eclipse.dir}" eclipse.destination.dir="${java.io.tmpdir}/eclipse" repositories.url.list="@{repositories.url.list}" pluginOrFeatures.name.list="@{pluginOrFeatures.name.list}">
+        		<jvmargs1>
+        			<jvmargs2/>
+        		</jvmargs1>
+        		<args1>
+        			<args2/>
+        		</args1>
+            </run.eclipse.install.pluginOrFeature>
+			<touch file="${java.io.tmpdir}/eclipse/${timestamp}" />
+			<echo>Zip packaged eclipse to @{eclipse.dest.zip}</echo>
+        	<zip destfile="@{eclipse.dest.zip}" basedir="${java.io.tmpdir}/eclipse"/>		
+			<delete dir="${java.io.tmpdir}/eclipse"/>
+        </sequential>
+    </macrodef>
+	
+	<macrodef name="create.eclipse.build.dir">
+		<attribute name="build.dir"/>
+		<sequential>
+			<echo>Create eclipse build directory @{build.dir}</echo>
+			<mkdir dir="${build.dir}"/>
+			<mkdir dir="${build.dir}/configuration"/>
+			<mkdir dir="${build.dir}/plugins"/>
+			<mkdir dir="${build.dir}/features"/>
+			<mkdir dir="${build.dir}/workspace"/>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="create.build.feature.configuration.file">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="build.configuration.file"/>
+		<attribute name="build.feature.id"/>
+		<attribute name="build.product.id" default=""/>
+		<attribute name="run.packager" default="true"/>
+		<attribute name="archive.prefix" default="${topLevelElementId}"/>
+		<attribute name="configs" default="*,*,*"/>
+		<attribute name="build.dir"/>
+		<attribute name="build.type" default="I"/>
+		<attribute name="build.id" default="Build"/>
+		<sequential>
+			<echo>Create build configuration file @{build.configuration.file} for feature @{build.feature.id}</echo>
+			<first id="build_configuration_file">
+			    <fileset dir="@{eclipse.dir}" includes="**/org.eclipse.pde.build_*/templates/headless-build/build.properties" />
+			</first>
+			<copy file="${toString:build_configuration_file}" tofile="@{build.configuration.file}.example"/>
+			<propertyfile file="@{build.configuration.file}">
+				<entry key="topLevelElementType" value="feature"/>
+				<entry key="topLevelElementId" value="@{build.feature.id}"/>
+				<entry key="product" value="@{build.product.id}"/>
+				<entry key="runPackager" value="@{run.packager}"/>
+				
+				<entry key="archivePrefix" value="@{archive.prefix}"/>
+				<entry key="collectingFolder" value="${archive.prefix}"/>
+				<entry key="configs" value="@{configs}"/>
+				<entry key="allowBinaryCycles" value="true"/>
+				
+				<entry key="zipArgs" value=""/>
+				<entry key="tarArgs" value=""/>
+				
+				<entry key="buildDirectory" value="@{build.dir}"/>
+				<entry key="buildType" value="@{build.type}"/>
+				<entry key="buildId" value="@{build.id}"/>
+				<entry key="buildLabel" value="${buildType}.${buildId}.${timestamp}"/>
+				<entry key="timestamp" value="${timestamp}"/>
+				
+				<entry key="base" value="@{eclipse.dir}/.."/>
+				<entry key="baseLocation" value="@{eclipse.dir}"/>
+				<entry key="baseos" value="win32"/>
+				<entry key="basews" value="win32"/>
+				<entry key="basearch" value="x86"/>
+				
+				<entry key="skipBase" value="true"/>
+				<entry key="skipMaps" value="true"/>
+				<entry key="skipFetch" value="true"/>
+					
+				<entry key="logExtension" value=".log"/>
+				
+				<entry key="javacDebugInfo" value="true"/>
+				<entry key="javacFailOnError" value="false"/>
+				<entry key="javacVerbose" value="true"/>
+				<entry key="compilerArg" value=""/>
+				<entry key="javacSource" value="1.6"/>
+				<entry key="javacTarget" value="1.6"/>
+			</propertyfile>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="run.eclipse.build">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="build.configuration.dir"/>
+		<element name="jvmargs2" optional="true" />
+		<element name="args2" optional="true" />
+		<sequential>
+			<echo>Build using configuration @{build.configuration.dir}</echo>
+			<first id="build_script">
+			    <fileset dir="@{eclipse.dir}" includes="**/org.eclipse.pde.build_*/scripts/build.xml" />
+			</first>
+			<run.eclipse.ant eclipse.dir="@{eclipse.dir}" ant.file="${toString:build_script}">
+				<jvmargs1>
+					<jvmargs2/>
+				</jvmargs1>
+				<args1>
+					<arg value="-Dbuilder=@{build.configuration.dir}"/>
+					<args2/>
+				</args1>
+			</run.eclipse.ant>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="run.eclipse.build.product">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="build.configuration.dir"/>
+		<element name="jvmargs2" optional="true" />
+		<element name="args2" optional="true" />
+		<sequential>
+			<echo>Build product using configuration @{build.configuration.dir}</echo>
+			<first id="build_script">
+			    <fileset dir="@{eclipse.dir}" includes="**/org.eclipse.pde.build_*/scripts/productBuild/productBuild.xml" />
+			</first>
+			<run.eclipse.ant eclipse.dir="@{eclipse.dir}" ant.file="${toString:build_script}">
+				<jvmargs1>
+					<jvmargs2/>
+				</jvmargs1>
+				<args1>
+					<arg value="-Dbuilder=@{build.configuration.dir}"/>
+					<args2/>
+				</args1>
+			</run.eclipse.ant>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="prepare.build.dir">
+		<attribute name="build.dir" default="${java.io.tmpdir}/build"/>
+		<attribute name="get.source.target"/>
+		<sequential>
+			<delete dir="@{build.dir}"/>
+			<create.eclipse.build.dir build.dir="@{build.dir}"/>
+			<antcall target="@{get.source.target}"/>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="build.feature.updatesite">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="work.dir" default="${java.io.tmpdir}/work"/>
+		<attribute name="build.feature.id"/>
+		<attribute name="build.type" default="I"/>
+		<attribute name="build.id" default="Build"/>
+		<attribute name="get.source.target"/>
+		<attribute name="updatesite.zip" default="@{work.dir}/../updatesite-@{build.feature.id}-${timestamp}.zip"/>
+		<sequential>
+			<delete dir="@{work.dir}"/>
+			<prepare.build.dir build.dir="@{work.dir}/build" get.source.target="@{get.source.target}"/>
+			<create.build.feature.configuration.file 
+				build.configuration.file="@{work.dir}/build/configuration/build.properties"
+				build.feature.id="@{build.feature.id}" 
+				run.packager="false"
+				build.dir="@{work.dir}/build"
+				build.type="@{build.type}"
+				build.id="@{build.id}" />
+			<run.eclipse.build build.configuration.dir="@{work.dir}/build/configuration"/>
+			<first id="repository_zip">
+			    <fileset dir="@{work.dir}/build" includes="**/@{build.feature.id}-@{build.id}.zip" />
+			</first>
+			<unzip src="${toString:repository_zip}" dest="@{work.dir}"/>
+			<run.eclipse.publish.feature source.dir="@{work.dir}/@{build.feature.id}" repository.url="file://@{work.dir}/@{build.feature.id}"/>
+			<zip destfile="@{updatesite.zip}" basedir="@{work.dir}/@{build.feature.id}"/>
+			<delete dir="@{work.dir}"/>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="run.eclipse.publish.feature">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="source.dir"/>
+		<attribute name="repository.url"/>
+		<attribute name="compress" default="true"/>
+		<sequential>
+			<p2.publish.featuresAndBundles repository="@{repository.url}" source="@{source.dir}" compress="@{compress}"/>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="run.eclipse.publish.category">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="repository.url"/>
+		<attribute name="category.file"/>
+		<sequential>
+			<run.eclipse.application 
+				eclipse.dir="@{eclipse.dir}"
+				application="org.eclipse.equinox.p2.publisher.CategoryPublisher">
+				<args0>
+					<arg value="-metadataRepository @{repository.url}"/>
+					<arg value="-categoryRepository @{category.file}"/>
+					<arg value="-compress"/>
+				</args0>
+			</run.eclipse.application>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="extract.source.git">
+		<attribute name="repository.url"/>
+		<attribute name="repository.name"/>
+		<attribute name="work.dir" default="${java.io.tmpdir}"/>
+		<attribute name="build.dir"/>
+		<attribute name="base.package.id" default=""/>
+		<sequential>
+			<delete dir="@{work.dir}/@{repository.name}"/>
+			<git-clone-pull repository="@{repository.url}" destination="@{work.dir}/@{repository.name}" />
+        	<move todir="@{build.dir}/features" includeEmptyDirs="yes" verbose="true">
+        		<fileset dir="@{work.dir}/@{repository.name}">
+        			<include name="**/@{base.package.id}*.feature/**" />
+        		</fileset>
+        	</move>
+        	<move todir="@{build.dir}/plugins" includeEmptyDirs="yes" verbose="true">
+        		<fileset dir="@{work.dir}/@{repository.name}">
+        			<include name="**/@{base.package.id}*/**" />
+        		</fileset>
+        	</move>
+			<delete dir="@{work.dir}/@{repository.name}"/>
+		</sequential>
+	</macrodef>
+	
+</project>

@@ -1,0 +1,28 @@
+<project name="Build Utility" default="build">
+
+	<property file="build.properties"/>
+	
+	<import file="../eclipse-ant/git.ant"/>
+	<import file="../eclipse-ant/p2.ant"/>
+
+	<property name="work.dir" value="${basedir}/work"/>
+	<property name="build.dir" value="${work.dir}/build"/>
+	<property name="git.dir" value="${work.dir}/git"/>
+
+	<target name="build">
+		<build.feature.updatesite
+			work.dir="${work.dir}"
+			build.feature.id="com.thalesgroup.openflexo.emf.model.city.updatesite.feature"
+			get.source.target="get_sources"
+		/>
+	</target>
+	
+	<target name="get_sources">
+		<extract.source.git
+			build.dir="${build.dir}" 
+			repository.url="${openflexo-eclipse.repository.url}"
+			repository.name="openflexo-eclipse"
+			base.package.id=""
+		/>
+	</target>
+</project>

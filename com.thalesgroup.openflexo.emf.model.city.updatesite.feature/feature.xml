@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.thalesgroup.openflexo.emf.model.city.updatesite.feature"
+      label="city UpdateSite Feature"
+      version="1.0.0.qualifier"
+      provider-name="THALESGROUP">
+
+   <includes
+         id="com.thalesgroup.openflexo.emf.model.city1.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="com.thalesgroup.openflexo.emf.model.city2.feature"
+         version="0.0.0"/>
+
+</feature>
