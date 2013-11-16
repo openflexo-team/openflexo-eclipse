@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Installer" default="installer">
+	<property file="installer.properties" />
+
+	<property name="work.dir" value="${basedir}/work"/>
+	
+	<import file="../eclipse-ant/p2.ant"/>
+	
+	<target name="installer">
+        <unzip src="${emfconnector.metamodel.exporter.zip}" dest="${work.dir}/org.openflexo.emfconnector.metamodel.exporter.feature"/>
+		<run.eclipse.install.pluginOrFeature
+			repositories.url.list="file://${work.dir}/org.openflexo.emfconnector.metamodel.exporter.feature"
+			pluginorfeatures.name.list="org.openflexo.emfconnector.metamodel.exporter.feature.group"
+			eclipse.destination.dir="${eclipse.destination.dir}"/>
+    </target>
+</project>

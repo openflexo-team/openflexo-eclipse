@@ -1,4 +1,4 @@
-<project name="Build Utility" default="build">
+<project name="Build openflexo-eclipse" default="build">
 
 	<property file="build.properties"/>
 	
@@ -9,10 +9,20 @@
 	<property name="build.dir" value="${work.dir}/build"/>
 	<property name="git.dir" value="${work.dir}/git"/>
 
-	<target name="build">
+	<target name="build" depends="build.city, build.exporter"/>
+	
+	<target name="build.city">
 		<build.feature.updatesite
 			work.dir="${work.dir}"
 			build.feature.id="com.thalesgroup.openflexo.emf.model.city.updatesite.feature"
+			get.source.target="get_sources"
+		/>
+	</target>
+	
+	<target name="build.exporter">
+		<build.feature.updatesite
+			work.dir="${work.dir}"
+			build.feature.id="org.openflexo.emfconnector.metamodel.exporter.feature"
 			get.source.target="get_sources"
 		/>
 	</target>
