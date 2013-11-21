@@ -9,7 +9,7 @@
 	<property name="build.dir" value="${work.dir}/build"/>
 	<property name="git.dir" value="${work.dir}/git"/>
 
-	<target name="build" depends="build.city, build.exporter"/>
+	<target name="build" depends="build.city, create.exporter.package"/>
 	
 	<target name="build.city">
 		<build.feature.updatesite
@@ -34,5 +34,18 @@
 			repository.name="openflexo-eclipse"
 			base.package.id=""
 		/>
+	</target>
+	
+	<target name="create.exporter.package" depends="build.exporter">
+		<mkdir dir="${work.dir}/exporter-${timestamp}"/>
+		<first id="updatesite_exporter_zip">
+		    <fileset dir="${basedir}" includes="**/*org.openflexo.emfconnector.metamodel.exporter.updatesite.feature*.zip" />
+		</first>
+		<copy file="${toString:updatesite_exporter_zip}" todir="${work.dir}/exporter-${timestamp}"/>
+		<copy file="exporter/install_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
+		<copy file="exporter/run_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
+		<download.file file.url="http://download.eclipse.org/tools/buckminster/products/director_latest-3.7.zip" destination="${work.dir}/exporter-${timestamp}"/>
+		<zip destfile="${basedir}/exporter-${timestamp}.zip" basedir="${work.dir}/exporter-${timestamp}"/>
+		<delete dir="${work.dir}"/>
 	</target>
 </project>
