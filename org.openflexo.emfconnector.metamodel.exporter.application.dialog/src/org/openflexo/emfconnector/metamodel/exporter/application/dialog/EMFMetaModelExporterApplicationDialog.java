@@ -1,15 +1,14 @@
 package org.openflexo.emfconnector.metamodel.exporter.application.dialog;
 
-import org.eclipse.equinox.app.IApplication;
-import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.swt.widgets.Shell;
 
-public class EMFMetaModelExporterApplicationDialog implements IApplication {
+public class EMFMetaModelExporterApplicationDialog extends AGraphicalApplication {
 
-	public Object start(IApplicationContext context) throws Exception {
-		System.out.println("Hi");
-		return IApplication.EXIT_OK;
+	public EMFMetaModelExporterApplicationDialog(String application) {
+		super(application);
 	}
 
-	public void stop() {
+	@Override
+	protected void createShellContent(Shell shell) {
 	}
 }

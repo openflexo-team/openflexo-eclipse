@@ -1,25 +1,14 @@
 package org.openflexo.emfconnector.metamodel.exporter.application.headless;
 
-import org.eclipse.equinox.app.IApplication;
-import org.eclipse.equinox.app.IApplicationContext;
+import java.util.Properties;
 
-/**
- * This class controls all aspects of the application's execution
- */
-public class EMFMetaModelExporterApplicationHeadless implements IApplication {
+public class EMFMetaModelExporterApplicationHeadless extends AHeadlessApplication {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
-	 */
-	public Object start(IApplicationContext context) throws Exception {
-		System.out.println("Hello RCP World!");
-		return IApplication.EXIT_OK;
+	public EMFMetaModelExporterApplicationHeadless(String application) {
+		super(application);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.equinox.app.IApplication#stop()
-	 */
-	public void stop() {
-		// nothing to do
+	@Override
+	protected void run(String[][] arguments, Properties properties) {
 	}
 }
