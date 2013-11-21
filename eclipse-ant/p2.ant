@@ -137,6 +137,32 @@
 		</sequential>
 	</macrodef>
 
+	<macrodef name="run.eclipse.uninstall.pluginOrFeature">
+		<attribute name="eclipse.dir" default="${eclipse.home}"/>
+		<attribute name="eclipse.destination.dir" />
+		<attribute name="pluginOrFeatures.name.list" />
+		<element name="jvmargs1" optional="true" />
+		<element name="args1" optional="true" />
+		<sequential>
+			<echo>Unnstall @{pluginOrFeatures.name.list} from @{eclipse.destination.dir}</echo>
+			<run.eclipse.application eclipse.dir="@{eclipse.dir}" application="org.eclipse.equinox.p2.director">
+				<jvmargs0>
+					<jvmarg value="-Declipse.p2.mirrors=false"/>
+					<jvmargs1/>
+				</jvmargs0>
+				<args0>
+					<arg value="-destination" />
+					<arg value="@{eclipse.destination.dir}" />
+					<arg value="-profileProperties"/>
+					<arg value="org.eclipse.update.install.features=true"/>
+					<arg value="-uninstallIU" />
+					<arg value="@{pluginOrFeatures.name.list}" />
+					<args1/>
+				</args0>
+			</run.eclipse.application>
+		</sequential>
+	</macrodef>
+
     <macrodef name="run.eclipse.packaging">
 		<attribute name="eclipse.dir" default="${eclipse.home}"/>
     	<attribute name="eclipse.src.zip"/>
