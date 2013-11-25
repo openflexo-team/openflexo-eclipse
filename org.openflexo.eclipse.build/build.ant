@@ -1,9 +1,10 @@
 <project name="Build openflexo-eclipse" default="build">
 
 	<property file="build.properties"/>
+	<property file="../../eclipse-tips/eclipse-ant/p2.properties"/>
 	
-	<import file="../eclipse-ant/git.ant"/>
-	<import file="../eclipse-ant/p2.ant"/>
+	<import file="../../eclipse-tips/eclipse-ant/git.ant"/>
+	<import file="../../eclipse-tips/eclipse-ant/p2.ant"/>
 
 	<property name="work.dir" value="${basedir}/work"/>
 	<property name="build.dir" value="${work.dir}/build"/>
@@ -45,7 +46,7 @@
 		<copy file="exporter/install_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
 		<copy file="exporter/run_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
 		<copy file="exporter/uninstall_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
-		<download.file file.url="http://download.eclipse.org/tools/buckminster/products/director_latest-3.7.zip" destination="${work.dir}/exporter-${timestamp}"/>
+		<download.file file.url="${director.url}" destination="${work.dir}/exporter-${timestamp}"/>
 		<zip destfile="${basedir}/exporter-${timestamp}.zip" basedir="${work.dir}/exporter-${timestamp}"/>
 		<delete dir="${work.dir}"/>
 	</target>
