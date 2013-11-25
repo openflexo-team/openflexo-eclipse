@@ -44,6 +44,7 @@
 		<copy file="${toString:updatesite_exporter_zip}" todir="${work.dir}/exporter-${timestamp}"/>
 		<copy file="exporter/install_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
 		<copy file="exporter/run_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
+		<copy file="exporter/uninstall_exporter.sh" todir="${work.dir}/exporter-${timestamp}"/>
 		<download.file file.url="http://download.eclipse.org/tools/buckminster/products/director_latest-3.7.zip" destination="${work.dir}/exporter-${timestamp}"/>
 		<zip destfile="${basedir}/exporter-${timestamp}.zip" basedir="${work.dir}/exporter-${timestamp}"/>
 		<delete dir="${work.dir}"/>
