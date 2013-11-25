@@ -8,13 +8,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.openflexo.emfconnector.metamodel.exporter.EMFMetaModelExportWizard;
 
-public class EMFMetaModelExporterApplicationDialog  implements IApplication {
+public class EMFMetaModelExporterApplicationDialog implements IApplication {
 
-	  protected IApplicationContext context = null;
-	  
+	protected IApplicationContext context = null;
+
 	public EMFMetaModelExporterApplicationDialog() {
 	}
-	
+
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
 		this.context = context;
@@ -32,5 +32,6 @@ public class EMFMetaModelExporterApplicationDialog  implements IApplication {
 
 	@Override
 	public void stop() {
+		this.context = null;
 	}
 }
