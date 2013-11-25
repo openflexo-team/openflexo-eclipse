@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Packaging eclipse">
+
+	<!-- override work.dir -->
+	<property name="work.dir" value="${basedir}/../work"/>
+	
+	<import file="../p2.ant"/>
+
+	<run.eclipse.packaging 
+		eclipse.src.zip="/home/benhur/Tools/eclipse-modeling-kepler-R-linux-gtk-x86_64.tar.gz" 
+		eclipse.dest.zip="${work.dir}/eclipse.zip" 
+		repositories.url.list="http://findbugs.cs.umd.edu/eclipse" 
+		pluginOrFeatures.name.list="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
+	
+</project>

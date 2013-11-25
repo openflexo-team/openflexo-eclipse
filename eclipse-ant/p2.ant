@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- see http://wiki.eclipse.org/Equinox/p2/Ant_Tasks -->
 <project name="P2">
+	<property file="p2.properties"/>
 	<import file="common.ant"/>
 
 	<!-- Director -->
@@ -12,7 +13,7 @@
 	</target>
 
 	<target name="do.deploy.director" unless="director.exist">
-		<download.file file.url="http://download.eclipse.org/tools/buckminster/products/director_latest-3.7.zip" destination="${destination}"/>
+		<download.file file.url="${director.url}" destination="${destination}"/>
 		<unzip src="${destination}/director_latest-3.7.zip" dest="${destination}"/>
 		<delete file="${destination}/director_latest-3.7.zip"/>
 	</target>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Build">
+
+	<!-- override work.dir -->
+	<property name="work.dir" value="${basedir}/../work"/>
+	
+	<ant antfile="../p2.ant" target="deploy.director">
+		<property name="destination" value="${work.dir}"/>
+	</ant>
+	
+</project>

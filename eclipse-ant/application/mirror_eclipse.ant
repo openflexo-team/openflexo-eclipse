@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Mirror eclipse">
+
+	<!-- override work.dir -->
+	<property name="work.dir" value="${basedir}/../work"/>
+	
+	<import file="../p2.ant"/>
+	
+	<run.eclipse.mirror 
+		mirror.name="FindBugs" 
+		updatesite.url="http://findbugs.cs.umd.edu/eclipse"
+		updatesite.filename="findbugs"
+		mirror.target.dir="${work.dir}"/>
+
+</project>

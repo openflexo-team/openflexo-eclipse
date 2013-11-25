@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Clone git">
+
+	<!-- override work.dir -->
+	<property name="work.dir" value="${basedir}/../work"/>
+	
+	<import file="../git.ant"/>
+	
+	<git-clone-pull 
+		repository="git@github.com:gbesancon/eclipse-tip.git" 
+		destination="${work.dir}/eclipse-tips" />
+
+</project>
