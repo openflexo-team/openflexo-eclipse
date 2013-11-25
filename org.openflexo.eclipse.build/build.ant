@@ -1,8 +1,9 @@
 <project name="Build openflexo-eclipse" default="build">
 
 	<property file="build.properties"/>
-	<property file="../../eclipse-tips/eclipse-ant/p2.properties"/>
 	
+	<!-- This script is using scripts from : https://github.com/gbesancon/eclipse-tips.git -->
+	<property file="../../eclipse-tips/eclipse-ant/p2.properties"/>	
 	<import file="../../eclipse-tips/eclipse-ant/git.ant"/>
 	<import file="../../eclipse-tips/eclipse-ant/p2.ant"/>
 
