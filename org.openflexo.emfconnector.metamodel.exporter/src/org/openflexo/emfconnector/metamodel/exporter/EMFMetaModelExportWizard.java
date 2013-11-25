@@ -35,44 +35,21 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 	protected Preferences preferences = ConfigurationScope.INSTANCE
 			.getNode(Activator.PLUGIN_ID);
 
-	/**
-	 * 
-	 * Constructor.
-	 */
 	public EMFMetaModelExportWizard() {
 		page = new EMFMetaModelExportWizardPage(preferences);
 		addPage(page);
 	}
 
-	/**
-	 * 
-	 * Follow the link.
-	 * 
-	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
-	 *      org.eclipse.jface.viewers.IStructuredSelection)
-	 */
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	}
 
-	/**
-	 * 
-	 * Follow the link.
-	 * 
-	 * @see org.eclipse.jface.wizard.Wizard#performFinish()
-	 */
 	@Override
 	public boolean performFinish() {
 		exportMetaModel(page.getEMFMetaModel(), page.getExportPath());
 		return true;
 	}
 
-	/**
-	 * Export MetaModel.
-	 * 
-	 * @param metaModelPackage
-	 * @param exportPath
-	 */
 	protected void exportMetaModel(EMFMetaModel emfMetaModel, String exportPath) {
 		exportMetaModel(exportPath,
 				FrameworkUtil.getBundle(emfMetaModel.ePackage.getClass())
@@ -85,17 +62,6 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 				emfMetaModel.resourceFactory.getClass().getCanonicalName());
 	}
 
-	/**
-	 * Export Meta Model.
-	 * 
-	 * @param exportPath
-	 * @param ePackageBundleName
-	 * @param resourceFactoryBundleName
-	 * @param metaModelUri
-	 * @param extension
-	 * @param ePackage
-	 * @param resourceFactory
-	 */
 	protected void exportMetaModel(String exportPath,
 			String ePackageBundleName, String resourceFactoryBundleName,
 			String metaModelUri, String extension, String ePackage,
@@ -151,14 +117,6 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 		return result;
 	}
 
-	/**
-	 * Export Bundle.
-	 * 
-	 * @param bundleSymbolicName
-	 * @param exportPath
-	 * @param bundleFiles
-	 * @param exportedBundleSymbolicNames
-	 */
 	protected void exportBundle(String bundleSymbolicName, String exportPath,
 			Set<File> bundleFiles, Set<String> exportedBundleSymbolicNames) {
 		try {
@@ -197,12 +155,6 @@ public class EMFMetaModelExportWizard extends Wizard implements IExportWizard {
 		}
 	}
 
-	/**
-	 * Copy File.
-	 * 
-	 * @param srcFile
-	 * @param destFile
-	 */
 	protected void copyFile(File srcFile, File destFile) {
 		try {
 			InputStream in = new FileInputStream(srcFile);
