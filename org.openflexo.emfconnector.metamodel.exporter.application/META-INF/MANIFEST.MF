@@ -1,8 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF MetaModel Exporter Application
-Bundle-SymbolicName: org.openflexo.emfconnector.metamodel.exporter.application
+Bundle-SymbolicName: org.openflexo.emfconnector.metamodel.exporter.application;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.eclipse.core.runtime
+Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
+ org.openflexo.emfconnector.metamodel.exporter;visibility:=reexport
 Export-Package: org.openflexo.emfconnector.metamodel.exporter.application
+Bundle-Vendor: OpenFlexo

@@ -5,9 +5,7 @@ Bundle-SymbolicName: org.openflexo.emfconnector.metamodel.exporter;singleton:=tr
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.emf.ecore,
  org.eclipse.emf.codegen.ecore
-Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: OpenFlexo
 Bundle-Activator: org.openflexo.emfconnector.metamodel.exporter.Activator
