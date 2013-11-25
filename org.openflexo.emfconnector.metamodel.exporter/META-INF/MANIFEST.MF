@@ -10,4 +10,3 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: OpenFlexo
 Bundle-Activator: org.openflexo.emfconnector.metamodel.exporter.Activator
 Export-Package: org.openflexo.emfconnector.metamodel.exporter
-Bundle-ActivationPolicy: lazy

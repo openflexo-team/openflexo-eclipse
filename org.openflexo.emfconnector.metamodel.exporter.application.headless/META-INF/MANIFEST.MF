@@ -5,5 +5,4 @@ Bundle-SymbolicName: org.openflexo.emfconnector.metamodel.exporter.application.h
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: OpenFlexo
-Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime
