@@ -7,3 +7,4 @@ Require-Bundle: org.eclipse.ui,
  org.openflexo.emfconnector.metamodel.exporter.application
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: OpenFlexo
+Bundle-ActivationPolicy: lazy
