@@ -1,4 +1,4 @@
-package org.openflexo.emfconnector.metamodel.exporter.application;
+package org.openflexo.emfconnector.metamodel.exporter.application.headless;
 
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;

@@ -12,7 +12,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.eclipse.osgi.util.NLS;
-import org.openflexo.emfconnector.metamodel.exporter.application.AApplication;
 
 public abstract class AHeadlessApplication extends AApplication
 {

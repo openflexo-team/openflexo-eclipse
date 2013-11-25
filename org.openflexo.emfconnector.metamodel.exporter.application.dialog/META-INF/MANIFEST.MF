@@ -4,7 +4,8 @@ Bundle-Name: EMF MetaModel Exporter Application Dialog
 Bundle-SymbolicName: org.openflexo.emfconnector.metamodel.exporter.application.dialog;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
- org.openflexo.emfconnector.metamodel.exporter.application
+ org.eclipse.core.runtime,
+ org.openflexo.emfconnector.metamodel.exporter
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: OpenFlexo
 Bundle-ActivationPolicy: lazy
