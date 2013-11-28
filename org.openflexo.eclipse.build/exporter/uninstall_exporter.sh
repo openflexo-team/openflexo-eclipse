@@ -8,5 +8,5 @@ java -jar plugins/org.eclipse.equinox.launcher_*.jar\
 	-destination $1\
 	-profileProperties org.eclipse.update.install.features=true\
 	-uninstallIU org.openflexo.emfconnector.metamodel.exporter.updatesite.feature.feature.group
-cd ..
+cd -
 rm -rf director

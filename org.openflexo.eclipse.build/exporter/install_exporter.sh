@@ -11,6 +11,6 @@ java -jar plugins/org.eclipse.equinox.launcher_*.jar\
 	-repository file://`pwd`/../updatesite-org.openflexo.emfconnector.metamodel.exporter/,http://download.eclipse.org/modeling/emf/emf/updates/releases/\
 	-profileProperties org.eclipse.update.install.features=true\
 	-installIU org.openflexo.emfconnector.metamodel.exporter.updatesite.feature.feature.group
-cd ..
+cd -
 rm -rf director
 rm -rf updatesite-org.openflexo.emfconnector.metamodel.exporter
