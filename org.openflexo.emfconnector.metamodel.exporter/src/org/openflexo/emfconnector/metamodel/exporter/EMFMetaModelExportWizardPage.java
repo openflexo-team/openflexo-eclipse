@@ -85,6 +85,9 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 		exportPathLabel.setText("Export Path :");
 		exportPathLabel.setToolTipText("Export path");
 		exportPathText.setText(preferences.get(exportPathPreference, ""));
+		GridData textFillGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		textFillGridData.horizontalSpan = 1;
+		exportPathText.setLayoutData(textFillGridData);
 		exportPathText.addModifyListener(new ModifyListener() {
 
 			@Override
