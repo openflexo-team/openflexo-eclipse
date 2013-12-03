@@ -29,6 +29,7 @@
 package org.openflexo.emfconnector.metamodel.exporter.ui;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -59,7 +60,7 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 
 	protected final Preferences preferences;
 	protected String exportPath = null;
-	protected EMFMetaModel emfMetaModel = null;
+	protected List<EMFMetaModel> emfMetaModels = null;
 
 	protected EMFMetaModelExportWizardPage(Preferences preferences) {
 		super("EMF Meta Model");
@@ -125,7 +126,7 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 		});
 
 		// MetaModel List
-		ListViewer packageUriListViewer = new ListViewer(container, SWT.SINGLE
+		ListViewer packageUriListViewer = new ListViewer(container, SWT.MULTI
 				| SWT.V_SCROLL);
 		GridData packageUriListGridData = new GridData(SWT.FILL, SWT.FILL,
 				true, true);
@@ -162,12 +163,7 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 					public void selectionChanged(SelectionChangedEvent event) {
 						IStructuredSelection selection = (IStructuredSelection) event
 								.getSelection();
-						if (selection.toList().size() > 0) {
-							emfMetaModel = (EMFMetaModel) selection
-									.getFirstElement();
-						} else {
-							emfMetaModel = null;
-						}
+						emfMetaModels = (List<EMFMetaModel>) selection.toList();
 						setPageComplete(checkPageComplete());
 					}
 				});
@@ -179,11 +175,12 @@ public class EMFMetaModelExportWizardPage extends WizardPage {
 	}
 
 	protected boolean checkPageComplete() {
-		return getEMFMetaModel() != null && getExportPath() != null;
+		return getEMFMetaModel() != null && getEMFMetaModel().size() > 0
+				&& getExportPath() != null;
 	}
 
-	public EMFMetaModel getEMFMetaModel() {
-		return emfMetaModel;
+	public List<EMFMetaModel> getEMFMetaModel() {
+		return emfMetaModels;
 	}
 
 	public String getExportPath() {

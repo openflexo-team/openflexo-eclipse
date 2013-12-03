@@ -3,8 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EMF MetaModel Exporter
 Bundle-SymbolicName: org.openflexo.emfconnector.metamodel.exporter;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.eclipse.emf.codegen.ecore,
- org.eclipse.emf.ecore;visibility:=reexport
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.codegen.ecore,
+ org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: OpenFlexo
 Export-Package: org.openflexo.emfconnector.metamodel.exporter
