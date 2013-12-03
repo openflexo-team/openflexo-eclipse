@@ -1,4 +1,4 @@
-package org.openflexo.emfconnector.metamodel.exporter;
+package org.openflexo.emfconnector.metamodel.exporter.ui;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +18,7 @@ import org.eclipse.osgi.service.resolver.BundleDescription;
 import org.eclipse.osgi.service.resolver.BundleSpecification;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
+import org.openflexo.emfconnector.metamodel.exporter.EMFMetaModel;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.Preferences;

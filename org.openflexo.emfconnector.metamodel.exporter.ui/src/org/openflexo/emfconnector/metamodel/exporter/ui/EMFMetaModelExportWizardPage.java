@@ -26,7 +26,7 @@
  * Contributors :
  *
  */
-package org.openflexo.emfconnector.metamodel.exporter;
+package org.openflexo.emfconnector.metamodel.exporter.ui;
 
 import java.util.Collection;
 
@@ -51,6 +51,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.openflexo.emfconnector.metamodel.exporter.EMFMetaModel;
+import org.openflexo.emfconnector.metamodel.exporter.EMFMetaModelUtility;
 import org.osgi.service.prefs.Preferences;
 
 public class EMFMetaModelExportWizardPage extends WizardPage {

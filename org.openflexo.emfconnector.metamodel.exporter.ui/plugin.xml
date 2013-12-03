@@ -9,7 +9,7 @@
       </category>
       <wizard
             category="org.openflexo.category"
-            class="org.openflexo.emfconnector.metamodel.exporter.EMFMetaModelExportWizard"
+            class="org.openflexo.emfconnector.metamodel.exporter.ui.EMFMetaModelExportWizard"
             id="org.openflexo.emfconnector.metamodel.exporter.wizard"
             name="EMF Exporter">
       </wizard>

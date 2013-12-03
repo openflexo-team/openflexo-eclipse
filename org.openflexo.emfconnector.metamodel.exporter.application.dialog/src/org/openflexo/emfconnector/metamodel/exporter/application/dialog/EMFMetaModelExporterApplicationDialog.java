@@ -6,7 +6,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.openflexo.emfconnector.metamodel.exporter.EMFMetaModelExportWizard;
+import org.openflexo.emfconnector.metamodel.exporter.ui.EMFMetaModelExportWizard;
 
 public class EMFMetaModelExporterApplicationDialog implements IApplication {
 
