@@ -7,6 +7,7 @@
 	<import file="../../eclipse-tips/eclipse-ant/git.ant"/>
 	<import file="../../eclipse-tips/eclipse-ant/p2.ant"/>
 
+	<property name="eclipse.dir" value="${eclipse.home}"/>
 	<property name="work.dir" value="${basedir}/work"/>
 	<property name="build.dir" value="${work.dir}/build"/>
 	<property name="git.dir" value="${work.dir}/git"/>
@@ -15,7 +16,7 @@
 	
 	<target name="build.city">
 		<build.feature.updatesite
-			eclipse.dir="${eclipse.home}"
+			eclipse.dir="${eclipse.dir}"
 			work.dir="${work.dir}"
 			build.feature.id="com.thalesgroup.openflexo.emf.model.city.updatesite.feature"
 			get.source.target="get_sources"
