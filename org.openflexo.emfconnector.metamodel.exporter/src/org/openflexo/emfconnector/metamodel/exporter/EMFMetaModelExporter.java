@@ -1,3 +1,41 @@
+/**
+ * 
+ * Copyright (c) 2013, Openflexo
+ * 
+ * This file is part of ./org.openflexo.emfconnector.metamodel.exporter/src/org/openflexo/emfconnector/metamodel/exporter/EMFMetaModelExporter.java, a component of the software infrastructure 
+ * developed at Openflexo.
+ * 
+ * 
+ * Openflexo is dual-licensed under the European Union Public License (EUPL, either 
+ * version 1.1 of the License, or any later version ), which is available at 
+ * https://joinup.ec.europa.eu/software/page/eupl/licence-eupl
+ * and the GNU General Public License (GPL, either version 3 of the License, or any 
+ * later version), which is available at http://www.gnu.org/licenses/gpl.html .
+ * 
+ * You can redistribute it and/or modify under the terms of either of these licenses
+ * 
+ * If you choose to redistribute it and/or modify under the terms of the GNU GPL, you
+ * must include the following additional permission.
+ *
+ *          Additional permission under GNU GPL version 3 section 7
+ *
+ *          If you modify this Program, or any covered work, by linking or 
+ *          combining it with software containing parts covered by the terms 
+ *          of EPL 1.0, the licensors of this Program grant you additional permission
+ *          to convey the resulting work. * 
+ * 
+ * This software is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * PARTICULAR PURPOSE. 
+ *
+ * See http://www.openflexo.org/license.html for details.
+ * 
+ * 
+ * Please contact Openflexo (openflexo-contacts@openflexo.org)
+ * or visit www.openflexo.org if you need additional information.
+ * 
+ */
+
 package org.openflexo.emfconnector.metamodel.exporter;
 
 import java.io.File;
@@ -19,139 +57,3 @@ import org.osgi.framework.FrameworkUtil;
 
 public class EMFMetaModelExporter {
 
-	/** Plugin org.eclipse.core.runtime. */
-	protected static String ORG_ECLIPSE_CORE_RUNTIME_PLUGIN_ID = "org.eclipse.core.runtime";
-	/** Plugin org.eclipse.emf.ecore. */
-	protected static String ORG_ECLIPSE_EMF_ECORE_PLUGIN_ID = "org.eclipse.emf.ecore";
-
-	public static void exportMetaModels(List<EMFMetaModel> emfMetaModels,
-			String exportPath) {
-		for (EMFMetaModel emfMetaModel : emfMetaModels) {
-			exportMetaModel(emfMetaModel, exportPath);
-		}
-	}
-
-	public static void exportMetaModel(EMFMetaModel emfMetaModel,
-			String exportPath) {
-		exportMetaModel(exportPath,
-				FrameworkUtil.getBundle(emfMetaModel.ePackage.getClass())
-						.getSymbolicName(),
-				FrameworkUtil
-						.getBundle(emfMetaModel.resourceFactory.getClass())
-						.getSymbolicName(), emfMetaModel.ePackageUri,
-				emfMetaModel.fileExtension, emfMetaModel.ePackage.getClass()
-						.getInterfaces()[0].getCanonicalName(),
-				emfMetaModel.resourceFactory.getClass().getCanonicalName());
-	}
-
-	protected static void exportMetaModel(String exportPath,
-			String ePackageBundleName, String resourceFactoryBundleName,
-			String metaModelUri, String extension, String ePackage,
-			String resourceFactory) {
-		File bundleNameFile = new File(exportPath + File.separator
-				+ ePackageBundleName);
-		bundleNameFile.mkdirs();
-		Set<File> bundleFiles = new HashSet<File>();
-		Set<String> exportedBundleSymbolicNames = new HashSet<String>();
-
-		// Compute Bundle Files
-		exportBundle(ePackageBundleName, bundleNameFile.getAbsolutePath(),
-				bundleFiles, exportedBundleSymbolicNames);
-		exportBundle(resourceFactoryBundleName,
-				bundleNameFile.getAbsolutePath(), bundleFiles,
-				exportedBundleSymbolicNames);
-
-		// Copy Bundle Files
-		for (File bundleFile : bundleFiles) {
-			File destFile = new File(bundleNameFile.getAbsoluteFile()
-					+ File.separator + bundleFile.getName());
-			copyFile(bundleFile, destFile);
-		}
-
-		// Write emf.properties file.
-		File emfPropertiesFile = new File((exportPath + File.separator
-				+ ePackageBundleName + File.separator + "emf.properties"));
-		try {
-			Properties properties = new Properties();
-			properties.put("URI", metaModelUri);
-			properties.put("EXTENSION", extension);
-			properties.put("PACKAGE", ePackage);
-			properties.put("RESOURCE_FACTORY", resourceFactory);
-			FileOutputStream fos = new FileOutputStream(emfPropertiesFile);
-			properties.store(fos, "");
-			fos.close();
-		} catch (Exception e) {
-			System.out.println("Error while writing emf.properties file : "
-					+ emfPropertiesFile.getAbsolutePath());
-		}
-	}
-
-	protected static boolean canExportBundle(String bundleSymbolicName,
-			Set<String> exportedBundleSymbolicNames) {
-		boolean result = true;
-		if (bundleSymbolicName
-				.equalsIgnoreCase(ORG_ECLIPSE_CORE_RUNTIME_PLUGIN_ID)
-				|| bundleSymbolicName
-						.equalsIgnoreCase(ORG_ECLIPSE_EMF_ECORE_PLUGIN_ID)
-				|| exportedBundleSymbolicNames.contains(bundleSymbolicName)) {
-			result = false;
-		}
-		return result;
-	}
-
-	protected static void exportBundle(String bundleSymbolicName,
-			String exportPath, Set<File> bundleFiles,
-			Set<String> exportedBundleSymbolicNames) {
-		try {
-			if (canExportBundle(bundleSymbolicName, exportedBundleSymbolicNames)) {
-				exportedBundleSymbolicNames.add(bundleSymbolicName);
-
-				BundleDescription bundleDescription = Platform
-						.getPlatformAdmin().getState()
-						.getBundle(bundleSymbolicName, null);
-				if (bundleDescription != null) {
-					Bundle bundle = Platform.getBundle(bundleDescription
-							.getSymbolicName());
-					if (bundle != null) {
-						File bundleFile = FileLocator.getBundleFile(bundle);
-						if (bundleFile != null) {
-							bundleFiles.add(bundleFile);
-							for (BundleSpecification bundleRequirement : bundleDescription
-									.getRequiredBundles()) {
-								exportBundle(bundleRequirement.getName(),
-										exportPath, bundleFiles,
-										exportedBundleSymbolicNames);
-							}
-						} else {
-							throw new Exception();
-						}
-					} else {
-						throw new Exception();
-					}
-				} else {
-					throw new Exception();
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("Error while exporting bundle : "
-					+ bundleSymbolicName);
-		}
-	}
-
-	protected static void copyFile(File srcFile, File destFile) {
-		try {
-			InputStream in = new FileInputStream(srcFile);
-			OutputStream out = new FileOutputStream(destFile);
-
-			byte[] buf = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
-			}
-			in.close();
-			out.close();
-		} catch (Exception e) {
-			System.out.println("Couldn't copy : " + srcFile.getAbsolutePath());
-		}
-	}
-}
