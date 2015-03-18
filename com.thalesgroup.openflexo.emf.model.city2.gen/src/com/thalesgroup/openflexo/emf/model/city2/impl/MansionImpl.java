@@ -102,7 +102,12 @@ public class MansionImpl extends HouseImpl implements Mansion {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case City2Package.MANSION__NUMBER:
-			setNumber((Integer) newValue);
+			if (newValue instanceof Long) {
+				setNumber(((Long) newValue).intValue());
+			}
+			else {
+				setNumber((Integer) newValue);
+			}
 			return;
 		}
 		super.eSet(featureID, newValue);
