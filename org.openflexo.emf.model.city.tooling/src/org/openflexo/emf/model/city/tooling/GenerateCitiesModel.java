@@ -299,6 +299,7 @@ public class GenerateCitiesModel {
 			resident = city1Factory.createResident();
 			resident.setName(generateRandomCitizenName());
 			cit1.getResidents().add(resident);
+			i--;
 		}
 
 		return cit1;
