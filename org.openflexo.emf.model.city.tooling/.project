@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>org.openflexo.emf.model.city.tooling</name>
+	<comment></comment>
+	<projects>
+		<project>com.thalesgroup.openflexo.emf.model.city1.gen</project>
+		<project>com.thalesgroup.openflexo.emf.model.city1.gen.edit</project>
+		<project>com.thalesgroup.openflexo.emf.model.city2.gen</project>
+		<project>com.thalesgroup.openflexo.emf.model.city2.gen.edit</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+</projectDescription>
