@@ -21,23 +21,29 @@ import com.thalesgroup.openflexo.emf.model.city2.Mayor;
 
 public class GenerateCitiesModel {
 
-	// XMI Factory
+	// EMF Factories
 	private static XMIResourceFactoryImpl  factory = new XMIResourceFactoryImpl();
+	private static City1Factory city1Factory = City1Factory.eINSTANCE; 
+	private static City2Factory city2Factory = City2Factory.eINSTANCE; 
 
 	// Random numbers
 	private static Random r = new Random();
-	
+
 	// Output Models
-	private static String city1File = "models/test1.city1";
-	private static String city2File = "models/test1.city2";
+	private static String city1FilePrefix = "models/generated";
+	private static String city2FilePrefix = "models/generated";
 
 	// Input Data
 	private static String cityDataFile = "data/villes_france.csv";
 	private static String prenomsDataFile = "data/prenoms.csv";
+	static List<String> listPrenoms = null;
 	private static Integer MAX_PRENOMS = 500;
 	private static String nomsDataFile = "data/noms_famille.csv";
 	private static Integer MAX_NOMS = 250;
-
+	static List<String> listNoms = null;
+	
+	// Number of random files to generate
+	static int MAX_TRIES_NUMBER = 10;
 
 	/**
 	 * @param args
@@ -46,66 +52,138 @@ public class GenerateCitiesModel {
 
 		try {
 			// read lists of nom and Prenom
-			List<String> listPrenoms = readInputData(prenomsDataFile);
-			List<String> listNoms = readInputData(nomsDataFile);
-			
-			// Create EMF Resource
-			City1Factory city1Factory = City1Factory.eINSTANCE; 
-			City2Factory city2Factory = City2Factory.eINSTANCE; 
+			listPrenoms = readInputData(prenomsDataFile);
+			listNoms = readInputData(nomsDataFile);
 
-			Resource r1 = makeResource(city1File);
-			Resource r2 = makeResource(city2File);
-			com.thalesgroup.openflexo.emf.model.city1.City cit1 = null;
-			com.thalesgroup.openflexo.emf.model.city2.City cit2 = null;
-			Mayor mayor = null;
-			Resident resident = null;
+			File citiesFile = new File (cityDataFile);
 
-			// ReadFile
-			File citiesFile = new File (cityDataFile);		
-			if(citiesFile.canRead()){
-
-				FileInputStream fstream;
-				fstream = new FileInputStream(citiesFile);
-				BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
-
-				String line;
-
-				while ((line = br.readLine()) != null){
-					String[] data = line.split(",");
-					String mayorName = listNoms.get(r.nextInt(MAX_NOMS)) + " " + listPrenoms.get(r.nextInt(MAX_PRENOMS));
-					
-					cit1 = city1Factory.createCity();
-					resident = city1Factory.createResident();
-					resident.setName(mayorName);
-					city1Factory.createCity();
-					cit1.setName(data[0]);
-					cit1.setZipcode(new Integer(data[1]));
-					cit1.getResidents().add(resident);
-					r1.getContents().add(cit1);
-					
-					cit2 = city2Factory.createCity();
-					cit2.setName(data[0]);
-					mayor = city2Factory.createMayor();
-					mayor.setName(mayorName);
-					cit2.setMayor(mayor);
-					r2.getContents().add(cit2);
-					
-
-				}
-
+			generateIdenticFilesForCitiesMoreThanXinhab(citiesFile,0);
+			generateIdenticFilesForCitiesMoreThanXinhab(citiesFile,10);
+			generateIdenticFilesForCitiesMoreThanXinhab(citiesFile,110);
+			generateIdenticFilesForCitiesMoreThanXinhab(citiesFile,120);
+			generateIdenticFilesForCitiesMoreThanXinhab(citiesFile,150);
+			generateIdenticFilesForCitiesMoreThanXinhab(citiesFile,1000);
+			int i = MAX_TRIES_NUMBER;
+			while (i>0){
+				generateDifferentFilesForCitiesMoreThanXinhab(citiesFile,0,"Try"+i);
+				generateDifferentFilesForCitiesMoreThanXinhab(citiesFile,10,"Try"+i);
+				generateDifferentFilesForCitiesMoreThanXinhab(citiesFile,110,"Try"+i);
+				generateDifferentFilesForCitiesMoreThanXinhab(citiesFile,120,"Try"+i);
+				generateDifferentFilesForCitiesMoreThanXinhab(citiesFile,150,"Try"+i);
+				generateDifferentFilesForCitiesMoreThanXinhab(citiesFile,1000,"Try"+i);
+				i--;
 			}
 
-			// Save Resources
-			r1.save(null);
-			r2.save(null);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
 	}
+	/** 
+	 * 
+	 * Generates CityFiles with some random differences, for cities that have more than (maxNbInhab * 1000) inhabitants
+	 * 
+	 * @param citiesFile
+	 * @param maxNbInhab
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
+	public static void generateDifferentFilesForCitiesMoreThanXinhab(File citiesFile, int maxNbInhab, String suffix) throws NumberFormatException, IOException{
+		// Create EMF Resource
 
+		Resource r1 = makeResource(city1FilePrefix + "_" + maxNbInhab +"kh" + suffix+".city1");
+		Resource r2 = makeResource(city2FilePrefix  +"_" + maxNbInhab+"kh" + suffix+".city2");
+		com.thalesgroup.openflexo.emf.model.city1.City cit1 = null;
+		com.thalesgroup.openflexo.emf.model.city2.City cit2 = null;
+		Mayor mayor = null;
 
+		// ReadFile
+		if(citiesFile.canRead()){
+
+			FileInputStream fstream;
+			fstream = new FileInputStream(citiesFile);
+			BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+			String line;
+			boolean genInCity1, genInCity2;
+
+			while ((line = br.readLine()) != null){
+				String[] data = line.split(",");
+				Integer size = new Integer(data[2]);
+				genInCity1 = r.nextBoolean();
+				genInCity2 = r.nextBoolean();
+				if (size > maxNbInhab*1000) {
+					String mayorName = listNoms.get(r.nextInt(MAX_NOMS)) + " " + listPrenoms.get(r.nextInt(MAX_PRENOMS));
+
+					if (genInCity1)
+						r1.getContents().add(genInCity1(data[0],new Integer(data[1]),mayorName));
+					if (genInCity2)
+						r2.getContents().add(genInCity2(data[0],new Integer(data[1]),mayorName));
+				}
+
+			}
+
+		}
+
+		// Save Resources
+		r1.save(null);
+		r2.save(null);
+	}
+
+	/** 
+	 * 
+	 * Generates identic CityFiles with cities that have more than (maxNbInhab * 1000) inhabitants
+	 * 
+	 * @param citiesFile
+	 * @param maxNbInhab
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
+	public static void generateIdenticFilesForCitiesMoreThanXinhab(File citiesFile, int maxNbInhab) throws NumberFormatException, IOException{
+		// Create EMF Resource
+
+		Resource r1 = makeResource(city1FilePrefix + "_" + maxNbInhab +"kh.city1");
+		Resource r2 = makeResource(city2FilePrefix  +"_" + maxNbInhab+"kh.city2");
+		com.thalesgroup.openflexo.emf.model.city1.City cit1 = null;
+		com.thalesgroup.openflexo.emf.model.city2.City cit2 = null;
+		Mayor mayor = null;
+		Resident resident = null;
+
+		// ReadFile
+		if(citiesFile.canRead()){
+
+			FileInputStream fstream;
+			fstream = new FileInputStream(citiesFile);
+			BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+			String line;
+
+			while ((line = br.readLine()) != null){
+				String[] data = line.split(",");
+				Integer size = new Integer(data[2]);
+				if (size > maxNbInhab*1000) {
+					String mayorName = listNoms.get(r.nextInt(MAX_NOMS)) + " " + listPrenoms.get(r.nextInt(MAX_PRENOMS));
+
+					r1.getContents().add(genInCity1(data[0],new Integer(data[1]),mayorName));
+					r2.getContents().add(genInCity2(data[0],new Integer(data[1]),mayorName));
+				}
+
+			}
+
+		}
+
+		// Save Resources
+		r1.save(null);
+		r2.save(null);
+	}
+
+	/** Makes new EMF Resources
+	 * 
+	 * @param filename
+	 * @return
+	 */
+	
 	public static Resource makeResource  (String filename){
 
 		URI uri = (org.eclipse.emf.common.util.URI.createFileURI(filename));
@@ -115,7 +193,46 @@ public class GenerateCitiesModel {
 		return emfResource;
 	}
 
-	
+	/** Generate a City for city1 MM
+	 * 
+	 * @return
+	 */
+
+	public static com.thalesgroup.openflexo.emf.model.city1.City genInCity1(String cityName, Integer zipcode, String mayorName){
+
+		com.thalesgroup.openflexo.emf.model.city1.City  cit1 = city1Factory.createCity();
+
+		Resident resident = city1Factory.createResident();
+		resident.setName(mayorName);
+
+		city1Factory.createCity();
+		cit1.setName(cityName);
+		cit1.setZipcode(zipcode);
+		cit1.getResidents().add(resident);
+
+		return cit1;
+
+	}
+
+	/** Generate a City for city2 MM
+	 * 
+	 * @return
+	 */
+
+	public static com.thalesgroup.openflexo.emf.model.city2.City genInCity2(String cityName, Integer zipcode, String mayorName){
+
+		com.thalesgroup.openflexo.emf.model.city2.City  cit2 = city2Factory.createCity();
+
+		cit2 = city2Factory.createCity();
+		cit2.setName(cityName);
+		Mayor mayor = city2Factory.createMayor();
+		mayor.setName(mayorName);
+		cit2.setMayor(mayor);
+
+		return cit2;
+
+	}
+
 	/**
 	 * Reads data from a file into a list
 	 * 
